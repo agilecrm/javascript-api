@@ -1,7 +1,7 @@
 # javascript-api
 Javascript Connector for Agile
 
-# Usage
+# usage
 TestAgile.html
 
         <!DOCTYPE html>
@@ -31,4 +31,4 @@ TestAgile.html
           </body>
         </html>
 
-See [TestContact.html]()for more example
+See [TestContact.html]() for more example
