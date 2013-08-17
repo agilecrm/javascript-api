@@ -6,11 +6,15 @@ TestAgile.html
 
         <!DOCTYPE html>
         <html>
+        
           <title> Test Agile CRM JavaScript API </title>
+          
           <head>
             <script type="text/javascript" src="https://YOUR_DOMAIN_NAME.agilecrm.com/stats/min/agile-min.js"></script>
           </head>
+          
           <body>
+          
             <script type="text/javascript" >
         
               // ------------SET YOUR ACCOUNT-----------------
@@ -28,7 +32,9 @@ TestAgile.html
               _agile.add_score(50, callback);
         
             </script>
+            
           </body>
+          
         </html>
 
 See [TestContact.html]() for more API call examples
