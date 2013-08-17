@@ -31,4 +31,4 @@ TestAgile.html
           </body>
         </html>
 
-See [TestContact.html]() for more example
+See [TestContact.html]() for more API call examples
