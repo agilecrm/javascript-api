@@ -1,12 +1,9 @@
 # javascript-api
-
 Javascript Connector for Agile
 
 # Usage
-
 TestAgile.html
 
-`
   <!DOCTYPE html>
   <html>
     <title> Test Agile CRM JavaScript API </title>
@@ -33,6 +30,5 @@ TestAgile.html
       </script>
     </body>
   </html>
-`
 
 See [TestContact.html]()for more example
