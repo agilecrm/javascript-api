@@ -1,0 +1,21 @@
+<html>
+   <head><title>Test Agile CRM API</title></head>
+   <body>
+      This is an example implementation of Agile CRM javascript API.
+      <script type="text/javascript" src="https://YOUR_DOMAIN.agilecrm.com/stats/min/agile-min.js"></script>
+      <script type="text/javascript">
+      
+      	 // Set your account and contact email
+         _agile.set_account('YOUR_API_KEY', 'YOUR_DOMAIN');
+         _agile.set_email('SET_YOUR_CONTACT_EMAIL');	
+         
+         // Example 
+         _agile.get_score(
+         _agile.get_tags(
+         _agile.get_notes( 
+         _agile.get_tasks( 
+         _agile.get_deals(
+         _agile.get_campaigns(,"agilecrm@example.com"))))));
+      </script>
+   </body>
+</html>

@@ -7,7 +7,9 @@ You need to have an agile account to use the API
 Create an account at http://www.agilecrm.com
 
 ```html
-<script type="text/javascript" src="https://YOUR_DOMAIN.agilecrm.com/stats/min/agile-min.js"></script>
+<script type="text/javascript" 
+
+src="https://YOUR_DOMAIN.agilecrm.com/stats/min/agile-min.js"></script>
 
 <script type="text/javascript" >
 
@@ -25,4 +27,4 @@ _agile.add_score(50, callback);
         
 </script>
 ```
-See [TestContact.html]() for example implementation 
+See [testcontact1.html]() and [testcontact2.html]for example implementation
