@@ -27,4 +27,4 @@ _agile.add_score(50, callback);
         
 </script>
 ```
-See [testcontact1.html]() and [testcontact2.html]for example implementation
+See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html) and [testcontact2.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact2.html) for example implementations
