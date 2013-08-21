@@ -6,6 +6,8 @@ You need to have an agile account to use the API
 
 Create an account at http://www.agilecrm.com
 
+Place the following script in the head tag of you webpage.
+
 ```html
 <script type="text/javascript" 
 
@@ -19,12 +21,6 @@ _agile.set_account('YOUR_API_KEY', 'YOUR_DOMAIN');
 // ------------SET YOUR CONTACT ----------------
 _agile.set_email('YOUR_CONTACT_EMAIL');
 
-// ------------SET TO TRACK PAGE VIEW-----------
-_agile.track_page_view(callback);
-        
-// ------------ADD SCORE TO CONTACT SET ABOVE---
-_agile.add_score(50, callback);
-        
 </script>
 ```
 See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html) and [testcontact2.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact2.html) for example implementations

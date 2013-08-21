@@ -1,21 +1,60 @@
 <html>
-   <head><title>Test Agile CRM API</title></head>
-   <body>
-      This is an example implementation of Agile CRM javascript API.
+   <head>
+      <title>Test Agile CRM API</title>
+      
       <script type="text/javascript" src="https://YOUR_DOMAIN.agilecrm.com/stats/min/agile-min.js"></script>
+      
       <script type="text/javascript">
       
-      	 // Set your account and contact email
-         _agile.set_account('YOUR_API_KEY', 'YOUR_DOMAIN');
-         _agile.set_email('SET_YOUR_CONTACT_EMAIL');	
+          // Set your agile account.
+          _agile.set_account('YOUR_API_KEY', 'YOUR_DOMAIN');
+          
+          // Set your contact email to execute API calls without providing email everytime and to track contact activity.
+          _agile.set_email('SET_YOUR_CONTACT_EMAIL');
+          
+      </script>
+   </head>
+   <body>
+   
+      This is an example implementation of Agile CRM javascript API.
+      
+      <script type="text/javascript">
+      	 
+      	// If you have set email of contact using _agile.set_email() above, email is optional for below API calls.
+      	 
+        // To get the score of contact.
+        _agile.get_score(function(){console.log("score fetched");}, 'agilecrm@example.com');
          
-         // Example 
-         _agile.get_score(
-         _agile.get_tags(
-         _agile.get_notes( 
-         _agile.get_tasks( 
-         _agile.get_deals(
-         _agile.get_campaigns(,"agilecrm@example.com"))))));
+ 	// To get tags related to contact.
+ 	_agile.get_tags(function(){console.log("tags fetched");}, 'agilecrm@example.com');
+ 	
+ 	// To get notes related to contact.
+ 	_agile.get_notes(function(){console.log("notes fetched");}, 'agilecrm@example.com');
+ 	
+ 	// To get tasks related to contact.
+ 	_agile.get_tasks(function(){console.log("tasks fetched");}, 'agilecrm@example.com');
+ 	
+ 	// To get deals related to contact.
+ 	_agile.get_deals(function(){console.log("deals fetched");}, 'agilecrm@example.com');
+ 	
+ 	// To get campaigns related to contact.
+ 	_agile.get_campaigns(function(){console.log("campaigns fetched");}, 'agilecrm@example.com');
+ 	
+        // To execute more than one API call place it in the callback of another API call.
+        // Set contact email using _agile.set_email() above or as shown below.
+        
+        // To get score and tags related to contact
+        _agile.get_score(_agile.get_tags(function(){console.log("score and tags fetched");}, 'agilecrm@example.com'));
+        
+        // Executing multiple API calls
+        
+        _agile.get_score(
+        _agile.get_tags(
+        _agile.get_notes(
+        _agile.get_tasks( 
+        _agile.get_deals(
+        _agile.get_campaigns(function(){console.log("fetched score, tags, notes, tasks & deals");}, "agilecrm@example.com"))))));
+         
       </script>
    </body>
 </html>
