@@ -20,7 +20,7 @@
       
       <script type="text/javascript">
       
-         // To track a page view.
+	 // To track a page view.
          _agile.track_page_view(function(){console.log("page set for tracking");});
          
          // To create contact.
@@ -36,14 +36,17 @@
          _agile.add_score(50, function(){console.log('added score');}, 'agilecrm@example.com');
          
          // To add note to contact.
-         _agile.add_note({"subject":"test", "description":"note"}, function(){console.log("note added");}, 'agilecrm@example.com');
+         _agile.add_note({"subject":"test", "description":"note"}, function(){console.log("note added");},
+         		 'agilecrm@example.com');
          
          // To add task to contact.
-         _agile.add_task({"type":"MEETING", "priority_type":"HIGH", "subject":"product review"}, function(){console.log("task added");}, 'agilecrm@example.com');
+         _agile.add_task({"type":"MEETING", "priority_type":"HIGH", "subject":"product review"},
+         		 function(){console.log("task added");}, 'agilecrm@example.com');
          
          // To add a deal to contact.
          _agile.add_deal({"name":"sale", "description":"house for sale", "expected_value":"10000", "milestone":"won",
-         		  "probability":"95", "close_date":"1376047332"}, function(){console.log("deal added");}, 'agilecrm@example.com');
+         		  "probability":"95", "close_date":"1376047332"}, function(){console.log("deal added");},
+         		  'agilecrm@example.com');
          
          // To execute more than one API call, place it in the callback of another API call
          // Set contact email using _agile.set_email() above or as shown below.
@@ -61,8 +64,8 @@
          _agile.add_note({"subject":"test", "description":"note"}, 
          _agile.add_task({"type":"MEETING", "priority_type":"HIGH", "subject":"product review"}, 
          _agile.add_deal({"name":"sale", "description":"house for sale", "expected_value":"10000", "milestone":"won",
-         		  "probability":"95", "close_date":"1376047332"}, function(){console.log("tag, score, note, task & deal added");},
-         		  "agilecrm@example.com"))))));
+         		  "probability":"95", "close_date":"1376047332"}, 
+         		  function(){console.log("tag, score, note, task & deal added");}, "agilecrm@example.com"))))));
       </script>
    </body>
 </html>
