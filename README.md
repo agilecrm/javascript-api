@@ -8,7 +8,7 @@ Create an account at http://www.agilecrm.com
 
 ###Putting the analytics JS code
 Go to Admin Settings -> API & Analytics -> Analytics Code
-Copy the 6 lines of code and put it in your webpage’s html (preferably in the <head> tag).
+Copy the 6 lines of code and put it in your webpage’s html (preferably in the head tag).
 This code should be placed on all pages for which you need tracking.
 
 ###Using the API
@@ -19,7 +19,8 @@ contact data from website to Agile.
 When a website visitor fills a form with his email and other information, you can add the 
 visitor as a contact in Agile, with the following method.
 ```html
-_agile.create_contact({"email": "jim@example.com", "first_name":"Jim", "last_name":"Brown", "tags":"tag1, tag2"});
+_agile.create_contact({"email": "jim@example.com", "first_name":"Jim", 
+		       "last_name":"Brown", "tags":"tag1, tag2"});
 ```
 Email is mandatory and all other data is optional. The optional “tags” should be followed 
 by a comma separated string of all tags you want to add to the contact being created.
@@ -45,6 +46,7 @@ the code below. You can specify a list of tags.
 ```html
 _agile.add_tag('tag1, tag2, tag3');
 ```
-You can check more API calls under ######Admin Settings > API & Analytics > Analytics Code
+You can check more API calls under 
+######Admin Settings > API & Analytics > Analytics Code
 
 See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html) and [testcontact2.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact2.html) for example implementations of all available API
