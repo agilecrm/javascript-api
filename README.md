@@ -19,8 +19,8 @@ contact data from website to Agile.
 When a website visitor fills a form with his email and other information, you can add the 
 visitor as a contact in Agile, with the following method.
 ```html
-_agile.create_contact({"email": "jim@example.com", "first_name":"Jim", 
-		       "last_name":"Brown", "tags":"tag1, tag2"});
+_agile.create_contact({"email": "jim@example.com", "first_name":"Jim",
+					   "last_name":"Brown", "tags":"tag1, tag2"});
 ```
 Email is mandatory and all other data is optional. The optional “tags” should be followed 
 by a comma separated string of all tags you want to add to the contact being created.
@@ -31,8 +31,8 @@ Agile stores the email id in the cookies and all subsequent visits by this perso
 ```html
 _agile.set_email('jim@example.com');
 ```
-Typically, once a visitor fills a form on your website, you should call  _agile.create_contact,
-and also call _agile.set_email.
+Typically, once a visitor fills a form on your website, you should call  "_agile.create_contact",
+and also call "_agile.set_email".
 Once this is done, you will start getting real-time notifications on Agile whenever the contact
 is on your website. You will also see his website visits in Timeline & Webstats tabs for that contact.
 
