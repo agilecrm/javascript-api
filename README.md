@@ -8,7 +8,7 @@ Create an account at http://www.agilecrm.com
 
 ###Putting the analytics JS code
 Go to Admin Settings -> API & Analytics -> Analytics Code
-Copy the 6 lines of code and put it in your webpage’s html (preferably in the head tag).
+Copy the 6 lines of code and put it in the body tag (preferably at the end) of your webpage's HTML.
 This code should be placed on all pages for which you need tracking.
 
 ###Using the API
