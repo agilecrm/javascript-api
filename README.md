@@ -10,7 +10,7 @@ Create an account at http://www.agilecrm.com
 
 ### Putting the analytics JS code
 
-Go to Admin Settings -> API & Analytics -> Analytics Code
+Go to ***Admin Settings -> API & Analytics -> Analytics Code***
 
 Copy the 6 lines of code and put it in the body tag (preferably at the end) of your webpage's HTML.
 
@@ -18,13 +18,15 @@ This code should be placed on all pages for which you need tracking.
 
 ### Using the API
 
-Once this code is put, you can use various API calls below for analytics, and for pushing contact data from website to Agile. 
+Once this code is put, you can use various API calls below for analytics, and for pushing contact data from
+
+website to Agile. 
 
 ##### Pushing contact data to Agile
 
-When a website visitor fills a form with his email and other information, you can add the visitor as a contact in Agile,
+When a website visitor fills a form with his email and other information, you can add the visitor as a contact in
 
-with the following method.
+Agile, with the following method.
 
 ```javascript
 _agile.create_contact({"email": "jim@example.com",
@@ -32,9 +34,9 @@ _agile.create_contact({"email": "jim@example.com",
 		       			"last_name":"Brown",
 		       			"tags":"tag1, tag2"});
 ```
-Email is mandatory and all other data is optional. The optional “tags” should be followed by a comma separated string of all tags you
+Email is mandatory and all other data is optional. The optional “tags” should be followed by a comma separated
 
-want to add to the contact being created.
+string of all tags you want to add to the contact being created.
 
 ##### Tracking a known person
 
@@ -45,7 +47,9 @@ Agile stores the email id in the cookies and all subsequent visits by this perso
 ```javascript
 _agile.set_email('jim@example.com');
 ```
-Typically, once a visitor fills a form on your website, you should call   ***_agile.create_contact***, and also call  ***_agile.set_email***.
+Typically, once a visitor fills a form on your website, you should call   ***_agile.create_contact***,
+
+and also call  ***_agile.set_email***.
 
 Once this is done, you will start getting real-time notifications on Agile whenever the contact is on your website. 
 
@@ -96,10 +100,10 @@ _agile.add_deal({"name":"Test Deal",
 
 ##### Adding a custom field entity to contact
 
-If custom field entity with the same name exists, it will be replaced.
+If custom field entity with the same name is already related to contact, then it will be replaced.
 
 ```javascript
-_agile.add_property({"name":"middlename","value": "june"}
+_agile.add_property({"name":"middlename","value": "jim"}
 ```
 
 You can check more API calls under
