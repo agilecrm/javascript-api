@@ -30,9 +30,10 @@ Agile, with the following method.
 
 ```javascript
 _agile.create_contact({"email": "jim@example.com",
-		       			"first_name":"Jim",
-		       			"last_name":"Brown",
-		       			"tags":"tag1, tag2"});
+		       			"first_name" : "Jim",
+		       			"last_name" : "Brown",
+		       			"company" : "abc corp",
+		       			"tags" : "tag1, tag2"});
 ```
 Email is mandatory and all other data is optional. The optional “tags” should be followed by a comma separated
 
@@ -120,8 +121,8 @@ _agile.add_deal({"name":"Test Deal",
 				"expected_value":"100",
 				"milestone":"won",
 				"probability":"5", 
-				"close_date":"1376047332"},
-				 optional_contact_email);
+				"close_date":"1376047332",
+				 optional_contact_email});
 ```
 
 The email id of the contact is required if you are not calling ***_agile.set_email*** method
@@ -138,9 +139,5 @@ If custom field entity with the same name is already related to contact, then it
 _agile.add_property({"name":"custom_field_name", "value": "custom_field_value"}
 ```
 The custom_field_name should be the name given while defining the custom field in Agile CRM
-
-You can check more API calls under
-
-##### Admin Settings > API & Analytics > Analytics Code
 
 See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html) and [testcontact2.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact2.html) for example implementations of all available API
