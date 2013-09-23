@@ -54,22 +54,18 @@ If you know the email id of the visitor (when the visitor fills the contact form
 _agile.set_email(visitorEmailId);
 ```
 Ideally, this needs to be done only once for each of your site visitors.
-
 Agile stores the email id in the browser cookies and uses it for all subsequent API calls made wherever email ID is not provided explicitly.
 
 Once you know the Email Id of the person, you can use the code below to give the same to Agile.
-
 Agile stores the email id in the cookies and all subsequent visits by this person are tracked.
 
 ```javascript
 _agile.set_email('jim@example.com');
 ```
 Typically, once a visitor fills a form on your website, you should call   ***_agile.create_contact***,
-
 and also call  ***_agile.set_email***.
 
-Once this is done, you will start getting real-time notifications on Agile whenever the contact is on your website. 
-
+Once this is done, you will start getting real-time notifications on Agile whenever the contact is on your website.
 You will also see his website visits in Timeline & Webstats tabs for that contact.
 
 #### Scoring & segmenting contacts 
@@ -99,7 +95,9 @@ Email is optional if you have set email above, using ***_agile.set_email***, els
 To add a note to contact
 
 ```javascript
-_agile.add_note({"subject":"test", "description":"note"}, callback, optional_contact_email);
+_agile.add_note({"subject":"test", "description":"note"},
+			      callback,
+			      optional_contact_email);
 ```
 
 To add task to contact
