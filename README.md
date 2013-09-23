@@ -90,7 +90,7 @@ The email id of the contact is required if you are not calling ***_agile.set_ema
 
 If that is done, the email parameter is optional.
 
-Please check the “Tracking website visitors” section for more information on ***_agile.set_email*** method. 
+Please check the ***Tracking website visitors*** section for more information on ***_agile.set_email*** method. 
 
 #### Adding Note, Task or Deal to contact
 
