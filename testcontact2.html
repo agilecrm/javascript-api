@@ -41,7 +41,7 @@
  	_agile.get_campaigns(function(){console.log("campaigns fetched");}, 'agilecrm@example.com');
  	
         // To execute more than one API call place it in the callback of another API call.
-        // Set contact email using _agile.set_email() above or as shown below.
+        // Set contact email using _agile.set_email() above.
         
         // To get score and tags related to contact
         _agile.get_score(_agile.get_tags(function(){console.log("score and tags fetched");}, 'agilecrm@example.com'));
@@ -53,8 +53,7 @@
         _agile.get_notes(
         _agile.get_tasks( 
         _agile.get_deals(
-        _agile.get_campaigns(function(){console.log("fetched score, tags, notes, tasks & deals");},
-        		     "agilecrm@example.com"))))));
+        _agile.get_campaigns(function(){console.log("fetched score, tags, notes, tasks & deals");}))))));
       </script>
    </body>
 </html>
