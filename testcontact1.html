@@ -49,7 +49,7 @@
          		  'agilecrm@example.com');
          
          // To execute more than one API call, place it in the callback of another API call
-         // Set contact email using _agile.set_email() above or as shown below.
+         // Set contact email using _agile.set_email() above.
          
          // To create a contact and add tags
          
@@ -66,7 +66,7 @@
          _agile.add_task({"type":"MEETING", "priority_type":"HIGH", "subject":"product review"}, 
          _agile.add_deal({"name":"sale", "description":"house for sale", "expected_value":"10000", "milestone":"won",
          		  "probability":"95", "close_date":"1376047332"}, 
-         		  function(){console.log("tag, score, note, task & deal added");}, "agilecrm@example.com"))))));
+         		  function(){console.log("tag, score, note, task & deal added");}))))));
       </script>
    </body>
 </html>
