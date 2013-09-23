@@ -30,11 +30,11 @@ Agile, with the following method.
 
 ```javascript
 _agile.create_contact({"email": "jim@example.com",
-		       			"first_name" : "Jim",
-		       			"last_name" : "Brown",
-		       			"company" : "abc corp",
-		       			"tags" : "tag1, tag2"},
-		       			callback);
+		       		   "first_name" : "Jim",
+		       		   "last_name" : "Brown",
+		       		   "company" : "abc corp",
+		       		   "tags" : "tag1, tag2"},
+		       		   callback);
 ```
 Email is mandatory and all other data is optional. The optional “tags” should be followed by a comma separated
 
@@ -106,21 +106,21 @@ To add task to contact
 
 ```javascript
 _agile.add_task({"type":"MEETING", "priority_type":"HIGH", "subject":"test"},
-		 			callback,
-		 			optional_contact_email);
+		 		 callback,
+		 		 optional_contact_email);
 ```
 
 You can add deal to contact, here close date is specified as epoch time.
 
 ```javascript
 _agile.add_deal({"name":"Test Deal",
-			      "description":"testing deal",
-			      "expected_value":"100",
-			      "milestone":"won",
-			      "probability":"5", 
-			      "close_date":"1376047332"},
-			       callback,
-			       optional_contact_email);
+			     "description":"testing deal",
+			     "expected_value":"100",
+			     "milestone":"won",
+			     "probability":"5", 
+			     "close_date":"1376047332"},
+			      callback,
+			      optional_contact_email);
 ```
 
 The email id of the contact is required if you are not calling ***_agile.set_email*** method before any of these calls.
@@ -135,9 +135,9 @@ If custom field entity with the same name is already related to contact, then it
 
 ```javascript
 _agile.add_property({"name":"custom_field_name",
-		     		  "value": "custom_field_value"},
-		     		   callback,
-		     		   optional_contact_email);
+		     		 "value": "custom_field_value"},
+		     		  callback,
+		     		  optional_contact_email);
 ```
 The custom_field_name should be the name given while defining the custom field in Agile CRM
 
