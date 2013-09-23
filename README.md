@@ -39,26 +39,22 @@ Email is mandatory and all other data is optional. The optional “tags” shoul
 
 string of all tags you want to add to the contact being created.
 
-##### Tracking a known person
+##### Tracking website visitors
 To track visitors on your website / application, you can use the call.
 
 ```javascript
 _agile.track_page_view();
 ```
-But for this to work, you need to first let Agile know the email id of the website visitor
+But for this to work, you need to first let Agile know the email id of the website visitor.
 
-If you know the email id of the visitor (when the visitor fills the contact form) you should 
-
-make the following call
+If you know the email id of the visitor (when the visitor fills the contact form) you should make the following call.
 
 ```javascript
 _agile.set_email(visitorEmailId);
 ```
 Ideally, this needs to be done only once for each of your site visitors.
 
-Agile stores the email id in the browser cookies and uses it for all subsequent API calls 
-
-made wherever email ID is not provided explicitly.
+Agile stores the email id in the browser cookies and uses it for all subsequent API calls made wherever email ID is not provided explicitly.
 
 Once you know the Email Id of the person, you can use the code below to give the same to Agile.
 
@@ -77,21 +73,21 @@ You will also see his website visits in Timeline & Webstats tabs for that contac
 
 ##### Scoring & segmenting contacts 
 
-You can score your leads/contacts when they visit a particular web page using the call below
+You can score your leads/contacts when they visit a particular web page using the call below.
 
 ```javascript
 _agile.add_score(10, optional_contact_email);
 ```
-You can segment your contacts based on pages visited or options they choose on your website using
+You can segment your contacts based on pages visited or options they choose on your website using the code below.
 
-the code below. You can specify a list of tags.
+You can specify a list of tags.
 
 ```javascript
 _agile.add_tag('tag1, tag2, tag3', optional_contact_email);
 ```
-The email id of the contact is required if you are not calling ***_agile.set_email*** method before
+The email id of the contact is required if you are not calling ***_agile.set_email*** method before any of these calls.
 
-any of these calls. If that is done, the email parameter is optional.
+If that is done, the email parameter is optional.
 
 Please check the “Tracking website visitors” section for more information on ***_agile.set_email*** method. 
 
@@ -117,17 +113,17 @@ You can add deal to contact, here close date is specified as epoch time.
 
 ```javascript
 _agile.add_deal({"name":"Test Deal",
-				"description":"testing deal",
-				"expected_value":"100",
-				"milestone":"won",
-				"probability":"5", 
-				"close_date":"1376047332",
-				 optional_contact_email});
+			      "description":"testing deal",
+			      "expected_value":"100",
+			      "milestone":"won",
+			      "probability":"5", 
+			      "close_date":"1376047332",
+			      optional_contact_email});
 ```
 
-The email id of the contact is required if you are not calling ***_agile.set_email*** method
+The email id of the contact is required if you are not calling ***_agile.set_email*** method before any of these calls.
 
-before any of these calls. If that is done, the email parameter is optional.
+If that is done, the email parameter is optional.
 
 Please check the ***Tracking website visitors*** section for more information on ***_agile.set_email*** method
 
@@ -136,7 +132,9 @@ Please check the ***Tracking website visitors*** section for more information on
 If custom field entity with the same name is already related to contact, then it will be replaced.
 
 ```javascript
-_agile.add_property({"name":"custom_field_name", "value": "custom_field_value"}
+_agile.add_property({"name":"custom_field_name",
+		     		     "value": "custom_field_value",
+		     		      optional_contact_email});
 ```
 The custom_field_name should be the name given while defining the custom field in Agile CRM
 
