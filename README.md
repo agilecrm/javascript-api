@@ -132,8 +132,9 @@ Please check the ***Tracking website visitors*** section for more information on
 If custom field entity with the same name is already related to contact, then it will be replaced.
 
 ```javascript
-_agile.add_property({"name":"custom_field_name",
-		     		 "value": "custom_field_value"},
+_agile.add_property({"name" : "custom_field_name",
+		     		 "value" : "custom_field_value",
+		     		 "type" : "CUSTOM"},
 		     		  callback,
 		     		  optional_contact_email);
 ```
