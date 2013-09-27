@@ -46,18 +46,18 @@ To track visitors on your website / application, you can use the call.
 ```javascript
 _agile.track_page_view(callback);
 ```
-But for this to work, you need to first let Agile know the email id of the website visitor.
+But for this to work, you need to first let Agile know the email address of the website visitor.
 
-If you know the email id of the visitor (when the visitor fills the contact form) you should make the following call.
+If you know the email address of the visitor (when the visitor fills the contact form) you should make the following call.
 
 ```javascript
-_agile.set_email(visitorEmailId);
+_agile.set_email(visitorEmail);
 ```
 Ideally, this needs to be done only once for each of your site visitors.
-Agile stores the email id in the browser cookies and uses it for all subsequent API calls made wherever email ID is not provided explicitly.
+Agile stores the email address in the browser cookies and uses it for all subsequent API calls made wherever email address is not provided explicitly.
 
-Once you know the Email Id of the person, you can use the code below to give the same to Agile.
-Agile stores the email id in the cookies and all subsequent visits by this person are tracked.
+Once you know the Email address of the person, you can use the code below to give the same to Agile.
+Agile stores the email address in the cookies and all subsequent visits by this person are tracked.
 
 ```javascript
 _agile.set_email('jim@example.com');
@@ -82,7 +82,7 @@ You can specify a list of tags.
 ```javascript
 _agile.add_tag('tag1, tag2, tag3', callback, optional_contact_email);
 ```
-The email id of the contact is required if you are not calling ***_agile.set_email*** method before any of these calls.
+The email address of the contact is required if you are not calling ***_agile.set_email*** method before any of these calls.
 
 If that is done, the email parameter is optional.
 
@@ -121,7 +121,7 @@ _agile.add_deal({"name":"Test Deal",
 			      optional_contact_email);
 ```
 
-The email id of the contact is required if you are not calling ***_agile.set_email*** method before any of these calls.
+The email address of the contact is required if you are not calling ***_agile.set_email*** method before any of these calls.
 
 If that is done, the email parameter is optional.
 
@@ -129,7 +129,9 @@ Please check the ***Tracking website visitors*** section for more information on
 
 #### Adding a custom field entity to contact
 
-If custom field entity with the same name is already related to contact, then it will be replaced.
+If field entity with the same name is already related to contact, then it will be updated. To add / update a custom field
+
+the json key "type" is mandatory in the data and its value must be set to "CUSTOM".
 
 ```javascript
 _agile.add_property({"name" : "custom_field_name",
