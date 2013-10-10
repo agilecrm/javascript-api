@@ -35,6 +35,10 @@ _agile.create_contact(
 	"first_name": "Jim",
 	"last_name": "Brown",
 	"company": "abc corp",
+	"title": "lead",
+	"phone": "+1-541-754-3010",
+	"website": "http://www.example.com",
+	"address": "{\"city\":\"new delhi\", \"state\":\"delhi\",\"country\":\"india\"}",
 	"tags": "tag1, tag2"
 }, {
 	success: function(data)
