@@ -18,15 +18,11 @@ Create an account at https://www.agilecrm.com
 
 ### Using the API
 
-- Once this code is put, you can use various API calls below for analytics, and for pushing contact data from
-
-website to Agile. 
+- Once this code is put, you can use various API calls below for analytics, and for pushing contact data from website to Agile. 
 
 #### Pushing contact data to Agile
 
-When a website visitor fills a form with his email and other information, you can add the visitor as a contact in
-
-Agile, with the following method.
+When a website visitor fills a form with his email and other information, you can add the visitor as a contact in Agile, with the following method.
 
 ```javascript
 _agile.create_contact(
@@ -38,7 +34,7 @@ _agile.create_contact(
 	"title": "lead",
 	"phone": "+1-541-754-3010",
 	"website": "http://www.example.com",
-	"address": "{\"city\":\"new delhi\", \"state\":\"delhi\",\"country\":\"india\"}",
+	"address": "{\"city\":\"new delhi\", \"state\":\"delhi\",\"country\":\"india\"}",//JSON STRINGIFIED
 	"tags": "tag1, tag2"
 }, {
 	success: function(data)
@@ -51,9 +47,7 @@ _agile.create_contact(
 	}
 });
 ```
-- Email is mandatory and all other data is optional. The optional “tags” should be followed by a comma separated
-
-string of all tags you want to add to the contact being created.
+- Email is mandatory and all other data is optional. The optional “tags” should be followed by a comma separated string of all tags you want to add to the contact being created.
 
 #### Setting a contact property
 
@@ -78,10 +72,9 @@ _agile.set_property(
 
 - field_name can be one of *'first_name', 'last_name', 'email', 'phone', 'website', 'company', 'title', 'address'*.
 
-It can also be the name of a *Custom Field* that you defined.
+- It can also be the name of a *Custom Field* that you defined.
 
-
-- Some fields are  multi-valued and have a ‘type’. For example, 'email' can be of type 'work'or 'personal'
+- Some fields are multi-valued and have a ‘type’. For example, 'email' can be of type 'work'or 'personal'
 
 - To set the type, you can pass the and additional key value pair in the json 
 ```json
@@ -125,13 +118,14 @@ _agile.track_page_view(
 _agile.set_email(visitor_email);
 ```
 - Ideally, this needs to be done only once for each of your site visitors.
-Agile stores the email address in the browser cookies and uses it for all subsequent API calls made wherever email address is not provided explicitly.
 
-- Typically, once a visitor fills a form on your website, you should call   **_agile.create_contact**,
-and also call  **_agile.set_email**.
+- Agile stores the email address in the browser cookies and uses it for all subsequent API calls made wherever email address is not provided explicitly.
+
+- Typically, once a visitor fills a form on your website, you should call  ```_agile.create_contact```,
+  and also call  ```_agile.set_email```.
 
 - Once this is done, you will start getting real-time notifications on Agile whenever the contact is on your website.
-You will also see his website visits in Timeline & Webstats tabs for that contact.
+  You will also see his website visits in Timeline & Webstats tabs for that contact.
 
 #### Scoring & segmenting contacts 
 
@@ -163,12 +157,12 @@ _agile.add_tag('tag1, tag2, tag3', {
 	}
 });
 ```
-- **Note**: These methods will work only if you have called  **_agile.set_email**  method earlier to store the email id of the contact in the cookie.
-Please check the **Tracking website visitors** section for more information on **_agile.set_email** method. 
+- **Note**: These methods will work only if you have called ```_agile.set_email```  method earlier to store the email id of the contact in the cookie.
+Please check the **Tracking website visitors** section for more information on ```_agile.set_email``` method. 
 
 #### Adding Note, Task or Deal to contact
 
-Email is optional if you have set email above, using **_agile.set_email**, else provide email to the API functions below.
+Email is optional if you have set email above, using ```_agile.set_email```, else provide email to the API functions below.
 
 To add a note to contact
 
@@ -232,8 +226,8 @@ _agile.add_deal(
 });
 ```
 
-- **Note**: These methods will work only if you have called  **_agile.set_email**  method earlier to store the email id of the contact in the cookie.
-Please check the **Tracking website visitors** section for more information on **_agile.set_email** method. 
+- **Note**: These methods will work only if you have called  ```_agile.set_email```  method earlier to store the email id of the contact in the cookie.
+Please check the **Tracking website visitors** section for more information on ```_agile.set_email``` method. 
 
 
 See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html), [testcontact2.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact2.html) and [testcontact3.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact3.html) for example implementations of all available API
