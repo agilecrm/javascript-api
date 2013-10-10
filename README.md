@@ -55,7 +55,7 @@ Email is mandatory and all other data is optional. The optional “tags” shoul
 
 string of all tags you want to add to the contact being created.
 
-### Setting a contact property
+#### Setting a contact property
 
 You can update a contact's property with the following call.
 
@@ -76,7 +76,7 @@ _agile.set_property(
 });
 ```
 
-filed_name can be one of - xxxxx  xxxxxxxxxx
+field_name can be one of 'first_name', 'last_name', 'email', 'phone', 'website', 'company', 'title', 'address'.
 
 It can also be the name of a Custom Field that you defined.
 
@@ -87,16 +87,19 @@ To set the type, you can pass the and additional key value pair in the json
 
 {
 	"name": "field_name",
-	  asdfadsfasdf
 	"value": "field_value",
-},
+	"type": "field_type"
+}
 
 The list of possible 'type' for various fields are as mentioned below:
-Website - types = url | skype | ….
-phone - types = home | …….
-email - types =  …….
-address - types = ….
 
+ - email = work, personal
+
+ - phone = work, home, mobile, main, home fax, work fax,other
+
+ - website = website, skype, twitter, linkedin, facebook, xing, blog, google+, flickr, github, youtube
+
+ - address = home, postal, office
 
 #### Tracking website visitors
 To track visitors on your website / application, you can use the call.
