@@ -231,4 +231,4 @@ _agile.add_deal(
 Please check the **Tracking website visitors** section for more information on ```_agile.set_email``` method. 
 
 
-See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html), and [testcontact3.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact3.html) for example implementations of all available API
+See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html) and [testcontact2.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact2.html) for example implementations of all available API

@@ -1,0 +1,105 @@
+<html>
+  
+  <head>
+  </head>
+  
+  <body>
+
+    // Set your AgileCRM domain name
+
+    <script type="https://YOUR_DOMAIN.agilecrm.com/stats/min/agile-min.js">
+    </script>
+
+    // Executing multiple AgileCRM JS API calls
+
+    <script type="text/javascript">
+
+      // Set your AgileCRM account
+
+      function set_account()
+      {
+        _agile.set_account('YOUR_API_KEY', 'YOUR_DOMAIN');
+      }
+
+      // Set contact email address
+
+      function set_email()
+      {
+        _agile.set_email("agilecrm@example.com");
+      }
+
+      // Set track page view
+
+      function set_tracking()
+      {
+        _agile.track_page_view(console.log("track page view set"));
+      }
+
+      // To create contact and add note
+
+      function create_contact()
+      {
+
+        _agile.create_contact(
+        {
+          "email": "agilecrm@example.com",
+          "first_name": "agile",
+          "last_name": "crm",
+          "tags": "tag1",
+          "company": "abc"
+        },
+
+        // To add note (success callback of _agile.create_contact)
+
+        {
+          success: function add_note()
+          {
+
+            _agile.add_note(
+            {
+              "subject": "test",
+              "description": "note"
+            },
+
+            // callback (success & error) for _agile.add_note
+
+            {
+              success: function(data)
+              {
+                console.log("contact created and added note");
+              },
+              error: function(data)
+              {
+                console.log("contact created, failed to add note");
+              }
+
+            });
+          },
+          error: function(data)
+          {
+            console.log("failed to create contact"); // error callback of _agile.create_contact
+          }
+        });
+      }
+
+      // Grouping functions together
+
+      function all()
+      {
+        set_account(); // to set agile account
+        set_email(); // to set contact (for tracking and api execution)
+        set_tracking(); // to track contact set above;
+        create_contact(); // includes functions to add note
+      }
+    </script>
+    Agile CRM JavaScript API Test
+    <script type="text/javascript">
+
+      // Calling multiple API functions 
+
+      all();
+      
+    </script>
+  </body>
+
+</html>
