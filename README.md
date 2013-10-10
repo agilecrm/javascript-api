@@ -55,6 +55,30 @@ Email is mandatory and all other data is optional. The optional “tags” shoul
 
 string of all tags you want to add to the contact being created.
 
+### Setting a contact property
+
+If field entity with the same name is already related to contact, then it will be updated. To add / update a custom field
+
+the json key "type" is mandatory in the data and its value must be set to "CUSTOM".
+
+```javascript
+_agile.set_property(
+{
+	"name": "custom_field_name",
+	"value": "custom_field_value",
+	"type": "custom_field_type"
+}, {
+	success: function(data)
+	{
+		console.log("success callback");
+	},
+	error: function(data)
+	{
+		console.log("error callback");
+	}
+});
+```
+
 #### Tracking website visitors
 To track visitors on your website / application, you can use the call.
 
@@ -203,29 +227,6 @@ If that is done, the email parameter is optional.
 
 Please check the **Tracking website visitors** section for more information on **_agile.set_email** method
 
-#### Adding a custom field entity to contact
-
-If field entity with the same name is already related to contact, then it will be updated. To add / update a custom field
-
-the json key "type" is mandatory in the data and its value must be set to "CUSTOM".
-
-```javascript
-_agile.set_property(
-{
-	"name": "custom_field_name",
-	"value": "custom_field_value",
-	"type": "custom_field_type"
-}, {
-	success: function(data)
-	{
-		console.log("success callback");
-	},
-	error: function(data)
-	{
-		console.log("error callback");
-	}
-});
-```
 The custom_field_name should be the name given while defining the custom field in Agile CRM
 
 See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html), [testcontact2.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact2.html) and [testcontact3.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact3.html) for example implementations of all available API
