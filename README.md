@@ -57,16 +57,13 @@ string of all tags you want to add to the contact being created.
 
 ### Setting a contact property
 
-If field entity with the same name is already related to contact, then it will be updated. To add / update a custom field
-
-the json key "type" is mandatory in the data and its value must be set to "CUSTOM".
+You can update a contact's property with the following call.
 
 ```javascript
 _agile.set_property(
 {
-	"name": "custom_field_name",
-	"value": "custom_field_value",
-	"type": "custom_field_type"
+	"name": "field_name",
+	"value": "field_value",
 }, {
 	success: function(data)
 	{
@@ -78,6 +75,28 @@ _agile.set_property(
 	}
 });
 ```
+
+filed_name can be one of - xxxxx  xxxxxxxxxx
+
+It can also be the name of a Custom Field that you defined.
+
+
+Some fields are  multi-value and have a ‘Type’. For example, 'email' can be of type 'work'or 'personal'
+
+To set the type, you can pass the and additional key value pair in the json 
+
+{
+	"name": "field_name",
+	  asdfadsfasdf
+	"value": "field_value",
+},
+
+The list of possible 'type' for various fields are as mentioned below:
+Website - types = url | skype | ….
+phone - types = home | …….
+email - types =  …….
+address - types = ….
+
 
 #### Tracking website visitors
 To track visitors on your website / application, you can use the call.
