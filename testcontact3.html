@@ -4,103 +4,109 @@
   </head>
   
   <body>
-  
-  // Set your Agile sub domain name
+    // Set your Agile sub domain name
     <script type="text/javascript" src="https://YOUR_DOMAIN.agilecrm.com/stats/min/agile-min.js">
-                      
+                              
     </script>
-    
     // Executing multiple Agile JS API calls
-    
     <script type="text/javascript">
-    
-    			// Set your Agile account
-                      	function set_account() {
-                  	  _agile.set_account('YOUR_API_KEY', 'YOUR_DOMAIN');
-                  	}
-			
-			// Set track page view
-                  	function set_tracking() {
-                  	  _agile.track_page_view(console.log("track page view set"));
-                  	}
-                  	
-                  	// To create contact
-                  	function create_contact() {
-                  	  _agile.create_contact({
-                  	    "email": "agilecrm@example.com",
-                  	    "first_name": "agile",
-                  	    "last_name": "crm",
-                  	    "tags": "tag1",
-                  	    "company": "abc"
-                  	  },
+		// Set your Agile account
 
-			// To add tags
-                  	  function add_tag() {
+        function set_account() {
+          _agile.set_account('YOUR_API_KEY', 'YOUR_DOMAIN');
+        }
+        
+        // Set contact email address
+        
+        function set_email() {
+			_agile.set_email("agilecrm@example.com");
+		}
 
-                  	    _agile.add_tag('tags2, tag3, tag4',
-                  	    
-                  	    // To add score
-                  	    function add_score() {
+        // Set track page view
 
-                  	      _agile.add_score(50,
-                  	      
-                  	      // To add note
-                  	      function add_note() {
+        function set_tracking() {
+          _agile.track_page_view(console.log("track page view set"));
+        }
 
-                  	        _agile.add_note({
-                  	          "subject": "test",
-                  	          "description": "note"
-                  	        },
-                  	        
-                  	        // To add task
-                  	        function add_task() {
+        // To create contact
 
-                  	          _agile.add_task({
-                  	            "type": "MEETING",
-                  	            "priority_type": "HIGH",
-                  	            "subject": "product review"
-                  	          },
-                  	          
-                  	          // To add deal
-                  	          function add_deal() {
+        function create_contact() {
+          _agile.create_contact({
+            "email": "agilecrm@example.com",
+            "first_name": "agile",
+            "last_name": "crm",
+            "tags": "tag1",
+            "company": "abc"
+          },
 
-                  	            _agile.add_deal({
-                  	              "name": "sale",
-                  	              "description": "house for sale",
-                  	              "expected_value": "10000",
-                  	              "milestone": "won",
-                  	              "probability": "95",
-                  	              "close_date": "1376047332"
-                  	            },
-                  	            
-                  	            // Callback
-                  	            function() {
-                  	              console.log("contact created with tag, score, note, task & deal");
+          // To add tags
 
-                  	            }, 'agilecrm@example.com');
+          function add_tag() {
 
-                  	          }, 'agilecrm@example.com');
+            _agile.add_tag('tags2, tag3, tag4',
 
-                  	        }, 'agilecrm@example.com');
+            // To add score
 
-                  	      }, 'agilecrm@example.com');
+            function add_score() {
 
-                  	    }, 'agilecrm@example.com');
-                  	  });
-                  	}
+              _agile.add_score(50,
 
-			// Grouping functions together
-                  	function all() {
-                  	  set_account();	// to set agile account
-                  	  set_tracking();	// to set page view tracking
-                  	  create_contact();	// includes functions to add tags, note, deal, and deal
-                  	}
+              // To add note
+
+              function add_note() {
+
+                _agile.add_note({
+                  "subject": "test",
+                  "description": "note"
+                },
+
+                // To add task
+
+                function add_task() {
+
+                  _agile.add_task({
+                    "type": "MEETING",
+                    "priority_type": "HIGH",
+                    "subject": "product review"
+                  },
+
+                  // To add deal
+
+                  function add_deal() {
+
+                    _agile.add_deal({
+                      "name": "sale",
+                      "description": "house for sale",
+                      "expected_value": "10000",
+                      "milestone": "won",
+                      "probability": "95",
+                      "close_date": "1376047332"
+                    },
+
+                    // Callback
+                    {
+                      success: function(data) {
+                        console.log("contact created with tag, score, note, task & deal");
+                      },
+                      error: function(data) {
+                        console.log("error occured");
+                      }
+                      
+                    });});});});});});}
+
+        // Grouping functions together
+
+        function all() {
+          set_account(); // to set agile account
+          set_email();	// to set contact email address to execute api
+          set_tracking(); // to set page view tracking
+          create_contact(); // includes functions to add tags, note, task, and deal
+        }
     </script>
     Agile CRM JavaScript API Test
     <script type="text/javascript">
-    
-    // Calling all API functions asynchronously
-              all();
+            // Calling all API functions asynchronously
+        all();
     </script>
   </body>
 

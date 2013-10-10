@@ -34,7 +34,8 @@ _agile.create_contact(
 	"title": "lead",
 	"phone": "+1-541-754-3010",
 	"website": "http://www.example.com",
-	"address": "{\"city\":\"new delhi\", \"state\":\"delhi\",\"country\":\"india\"}",//JSON STRINGIFIED
+	"address": "{\"city\":\"new delhi\", \"state\":\"delhi\",\"country\":\"india\"}",
+	//JSON STRINGIFIED
 	"tags": "tag1, tag2"
 }, {
 	success: function(data)
@@ -230,4 +231,4 @@ _agile.add_deal(
 Please check the **Tracking website visitors** section for more information on ```_agile.set_email``` method. 
 
 
-See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html), [testcontact2.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact2.html) and [testcontact3.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact3.html) for example implementations of all available API
+See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html), and [testcontact3.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact3.html) for example implementations of all available API
