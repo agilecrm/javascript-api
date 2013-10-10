@@ -127,12 +127,6 @@ _agile.set_email(visitor_email);
 Ideally, this needs to be done only once for each of your site visitors.
 Agile stores the email address in the browser cookies and uses it for all subsequent API calls made wherever email address is not provided explicitly.
 
-Once you know the Email address of the person, you can use the code below to give the same to Agile.
-Agile stores the email address in the cookies and all subsequent visits by this person are tracked.
-
-```javascript
-_agile.set_email('jim@example.com');
-```
 Typically, once a visitor fills a form on your website, you should call   **_agile.create_contact**,
 and also call  **_agile.set_email**.
 
@@ -171,10 +165,7 @@ _agile.add_tag('tag1, tag2, tag3', {
 	}
 });
 ```
-The email address of the contact is required if you are not calling **_agile.set_email** method before any of these calls.
-
-If that is done, the email parameter is optional.
-
+Note: These methods will work only if you have called  **_agile.set_email**  method earlier to store the email id of the contact in the cookie.
 Please check the **Tracking website visitors** section for more information on **_agile.set_email** method. 
 
 #### Adding Note, Task or Deal to contact
@@ -243,12 +234,8 @@ _agile.add_deal(
 });
 ```
 
-The email address of the contact is required if you are not calling **_agile.set_email** method before any of these calls.
+Note: These methods will work only if you have called  **_agile.set_email**  method earlier to store the email id of the contact in the cookie.
+Please check the **Tracking website visitors** section for more information on **_agile.set_email** method. 
 
-If that is done, the email parameter is optional.
-
-Please check the **Tracking website visitors** section for more information on **_agile.set_email** method
-
-The custom_field_name should be the name given while defining the custom field in Agile CRM
 
 See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html), [testcontact2.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact2.html) and [testcontact3.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact3.html) for example implementations of all available API
