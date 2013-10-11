@@ -77,7 +77,8 @@ _agile.set_property(
 
 - Some fields are multi-valued and have a ‘type’. For example, 'email' can be of type 'work'or 'personal'
 
-- To set the type, you can pass the and additional key value pair in the json 
+- To set the type, you can pass the and additional key value pair in the json
+
 ```json
 {
 	"name": "field_name",
