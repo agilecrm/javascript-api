@@ -14,6 +14,8 @@ Create an account at https://www.agilecrm.com
 
 - Copy the 6 lines of code and put it in the body tag (preferably at the end) of your webpage's HTML.
 
+![Finding Analytics Code] (https://raw.github.com/agilecrm/javascript-api/master/analytics_code.png)
+
 - This code should be placed on all pages for which you need tracking.
 
 ### Using the API
@@ -25,27 +27,27 @@ Create an account at https://www.agilecrm.com
 When a website visitor fills a form with his email and other information, you can add the visitor as a contact in Agile, with the following method.
 
 ```javascript
-_agile.create_contact(
-{
-	"email": "jim@example.com",
-	"first_name": "Jim",
-	"last_name": "Brown",
-	"company": "abc corp",
-	"title": "lead",
-	"phone": "+1-541-754-3010",
-	"website": "http://www.example.com",
-	"address": "{\"city\":\"new delhi\", \"state\":\"delhi\",\"country\":\"india\"}",
-	//JSON STRINGIFIED
-	"tags": "tag1, tag2"
-}, {
-	success: function(data)
-	{
-		console.log("success callback");
-	},
-	error: function(data)
-	{
-		console.log("error callback");
-	}
+var contact = {};
+
+contact.email = "jim@example.com";
+contact.first_name = "Jim";
+contact.last_name = "Brown";
+contact.company = "abc corp";
+contact.title = "lead";
+contact.phone = "+1-541-754-3010";
+contact.website = "http://www.example.com";
+contact.tags = "tag1, tag2";
+contact.address = "{\"city\":\"new delhi\", \"state\":\"delhi\",\"country\":\"india\"}";
+
+_agile.create_contact(contact, {
+    success: function (data)
+    {
+        console.log("success callback");
+    },
+    error: function (data)
+    {
+        console.log("error callback");
+    }
 });
 ```
 - Email is mandatory and all other data is optional. The optional “tags” should be followed by a comma separated string of all tags you want to add to the contact being created.
@@ -55,19 +57,18 @@ _agile.create_contact(
 You can update a contact's property with the following call.
 
 ```javascript
-_agile.set_property(
-{
-	"name": "field_name",
-	"value": "field_value",
-}, {
-	success: function(data)
-	{
-		console.log("success callback");
-	},
-	error: function(data)
-	{
-		console.log("error callback");
-	}
+property.name = "field_name";
+property.value = "field_value";
+
+_agile.set_property(property, {
+    success: function (data)
+    {
+        console.log("success callback");
+    },
+    error: function (data)
+    {
+        console.log("error callback");
+    }
 });
 ```
 
@@ -159,20 +160,20 @@ _agile.add_tag('tag1, tag2, tag3', {
 	}
 });
 ```
-- **Note**: These methods will work only if you have called ```_agile.set_email```  method earlier to store the email id of the contact in the cookie.
+- **Note**: These methods will work only if you have called ```_agile.set_email```  method earlier to store the email address of the contact in the cookie.
 Please check the **Tracking website visitors** section for more information on ```_agile.set_email``` method. 
 
 #### Adding Note, Task or Deal to contact
 
-Email is optional if you have set email above, using ```_agile.set_email```, else provide email to the API functions below.
+You have set email, using ```_agile.set_email``` before calling the below API calls.
 
 To add a note to contact
 
 ```javascript
 _agile.add_note(
 {
-	"subject": "test",
-	"description": "note"
+	"subject": "Test Note",
+	"description": "This is a test note"
 }, {
 	success: function(data)
 	{
@@ -192,7 +193,7 @@ _agile.add_task(
 {
 	"type": "MEETING",
 	"priority_type": "HIGH",
-	"subject": "test"
+	"subject": "This is a test task"
 }, {
 	success: function(data)
 	{
@@ -208,28 +209,28 @@ _agile.add_task(
 You can add deal to contact, here close date is specified as epoch time.
 
 ```javascript
-_agile.add_deal(
-{
-	"name": "Test Deal",
-	"description": "testing deal",
-	"expected_value": "100",
-	"milestone": "won",
-	"probability": "5",
-	"close_date": "1376047332"
-}, {
-	success: function(data)
-	{
-		console.log("success callback");
-	},
-	error: function(data)
-	{
-		console.log("error callback");
-	}
+var deal = {};
+deal.name = "Test Deal";
+deal.description = "This is a test deal";
+deal.expected_value = "100";
+deal.milestone = "won";
+deal.probability = "5";
+deal.close_date = "1376047332";
+
+_agile.add_deal(deal, {
+    success: function (data)
+    {
+        console.log("success callback");
+    },
+    error: function (data)
+    {
+        console.log("error callback");
+    }
 });
 ```
 
-- **Note**: These methods will work only if you have called  ```_agile.set_email```  method earlier to store the email id of the contact in the cookie.
+- **Note**: These methods will work only if you have called  ```_agile.set_email```  method earlier to store the email address of the contact in the cookie.
 Please check the **Tracking website visitors** section for more information on ```_agile.set_email``` method. 
 
 
-See [testcontact1.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact1.html) and [testcontact2.html](https://github.com/agilecrm/javascript-api/blob/master/testcontact2.html) for example implementations of all available API
+See [create_contact.html](https://github.com/agilecrm/javascript-api/blob/master/create_contact.html) and [all.html](https://github.com/agilecrm/javascript-api/blob/master/all.html) for example implementations of all available API
