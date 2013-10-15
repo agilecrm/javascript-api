@@ -236,9 +236,10 @@ Please check the **Tracking website visitors** section for more information on `
 
 #### Execute multiple API calls simultaneously
 
-To execute multiple API calls simultaneously, you need to nest the API call in the success callback of the previous API call. ```_agile.set_email``` must be called before looping the API calls in the success callbacks, to ensure email is stored in the cookie and is available for API execution.
+- To execute multiple API calls simultaneously, you need to nest the API call in the success callback of the previous API call. ```_agile.set_email``` must be called before looping the API calls in the success callbacks, to ensure email is stored in the cookie and is available for API execution.
 
-Agile CRM uses multiple databases for redundancy. Hence, the reads are not available after immediate writes. This can cause few of your calls to fail if called in succession. Example to create contact and add score, you should use the success callback of ```_agile_create_contact``` to call ```_agile.add_score. This ensures that the score is appropriately added. Also you need to set contact email using ```_agile.set_email``` before.
+- Agile CRM uses multiple databases for redundancy. Hence, the reads are not available after immediate writes. This can cause few of your calls to fail if called in succession. Example to create contact and add score, you should use the success callback of ```_agile_create_contact``` to call ```_agile.add_score```.
+This ensures that the score is appropriately added. Also you need to set contact email using ```_agile.set_email``` before.
  
 
 See [create_contact.html](https://github.com/agilecrm/javascript-api/blob/master/create_contact.html) and [all.html](https://github.com/agilecrm/javascript-api/blob/master/all.html) for example implementations of all available API
