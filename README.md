@@ -37,7 +37,7 @@ contact.title = "lead";
 contact.phone = "+1-541-754-3010";
 contact.website = "http://www.example.com";
 contact.tags = "tag1, tag2";
-contact.address = "{\"city\":\"new delhi\", \"state\":\"delhi\",\"country\":\"india\"}";
+contact.address = "{\"city\":\"new delhi\",\"state\":\"delhi\",\"country\":\"india\"}";
 
 _agile.create_contact(contact, {
     success: function (data)
@@ -57,6 +57,7 @@ _agile.create_contact(contact, {
 You can update a contact's property with the following call.
 
 ```javascript
+var property= {};
 property.name = "field_name";
 property.value = "field_value";
 
@@ -170,11 +171,11 @@ You have set email, using ```_agile.set_email``` before calling the below API ca
 To add a note to contact
 
 ```javascript
-_agile.add_note(
-{
-	"subject": "Test Note",
-	"description": "This is a test note"
-}, {
+var note = {};
+note.subject = "Test Note";
+note.description = "This is a test note";
+
+_agile.add_note(note, {
 	success: function(data)
 	{
 		console.log("success callback");
@@ -189,12 +190,13 @@ _agile.add_note(
 To add task to contact
 
 ```javascript
-_agile.add_task(
-{
-	"type": "MEETING",
-	"priority_type": "HIGH",
-	"subject": "This is a test task"
-}, {
+var task = {};
+task.type = "MEETING";
+task.priority_type = "HIGH";
+task.subject = "This is a test task";
+task.due = "1376047332";
+
+_agile.add_task(task, {
 	success: function(data)
 	{
 		console.log("success callback");
@@ -232,5 +234,11 @@ _agile.add_deal(deal, {
 - **Note**: These methods will work only if you have called  ```_agile.set_email```  method earlier to store the email address of the contact in the cookie.
 Please check the **Tracking website visitors** section for more information on ```_agile.set_email``` method. 
 
+#### Execute multiple API calls simultaneously
+
+To execute multiple API calls simultaneously, you need to nest the API call in the success callback of the previous API call. ```_agile.set_email``` must be called before looping the API calls in the success callbacks, to ensure email is stored in the cookie and is available for API execution.
+
+Agile CRM uses multiple databases for redundancy. Hence, the reads are not available after immediate writes. This can cause few of your calls to fail if called in succession. Example to create contact and add score, you should use the success callback of ```_agile_create_contact``` to call ```_agile.add_score. This ensures that the score is appropriately added. Also you need to set contact email using ```_agile.set_email``` before.
+ 
 
 See [create_contact.html](https://github.com/agilecrm/javascript-api/blob/master/create_contact.html) and [all.html](https://github.com/agilecrm/javascript-api/blob/master/all.html) for example implementations of all available API
