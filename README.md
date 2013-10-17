@@ -289,7 +289,7 @@ _agile.substract_score(5, {
 ```
 ####4.3 Get Score
 
-Get score associated with contact, set using ```_agile.set_email```.
+Get score associated with contact set earlier, using ```_agile.set_email```.
 
 - Parameters : callback
 
@@ -306,7 +306,7 @@ _agile.get_score({
 ###5.Task
 ####5.1 Add Task
 
-Add task to contact, set earlier using ```_agile.set_email```.
+Add task to contact set earlier, using ```_agile.set_email```.
 
 Task object has the properties **type** with values as *CALL* | *EMAIL* | *FOLLOW_UP* | *MEETING* | *MILESTONE* | *SEND* | *TWEET*, **priority_type** with values as *HIGH* | *NORMAL* | *LOW*, **subject** the subject of task and **due** which is the due date for the task.
 
@@ -434,7 +434,7 @@ var company = {};
 company.name = "abc inc";
 company.phone = "+1-541-754-3010";
 company.url = "http://www.abc-inc.com";
-company.address = "{\"city\": \"new delhi\",\"state\": \"delhi\",\"country\": \"india\"}";
+company.address = "{\"city\":\"new delhi\",\"state\":\"delhi\",\"country\":\"india\"}";
 
 _agile.create_company(company, {
     success: function (data) {
