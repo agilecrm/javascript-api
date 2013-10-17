@@ -1,174 +1,353 @@
-# Javascript API
+JavaScript API
+==============
+JavaScript Connector for Agile
 
-Javascript Connector for Agile
-
-# Usage
-
-You need to have an agile account to use the API
+You need to have an agile account to use the API.
 
 Create an account at https://www.agilecrm.com
 
-### Putting the analytics JS code
+# Important Info
 
-- Go to ***Admin Settings -> API & Analytics -> Analytics Code***
-
-- Copy the 6 lines of code and put it in the body tag (preferably at the end) of your webpage's HTML.
+- You may access the analytics code from ***Admin Settings -> API & Analytics -> Analytics Code***
+- Copy the 6 lines of code and paste in it in your webpage's HTML just before the ```</BODY>``` tag, for which you need API methods and / or tracking.
 
 ![Finding Analytics Code] (https://raw.github.com/agilecrm/javascript-api/master/analytics_code.png)
 
-- This code should be placed on all pages for which you need tracking.
+- Contact email must be set once using ```_agile.set_email``` method before calling the API, to ensure that email is stored in the cookie and is available for API execution.
+- To execute multiple API simultaneously, you need to place the API call in the success callback of the previous API call.
+- Format of callback is 
 
-### Using the API
+```javascript
+{
+    success: function(data){
+        console.log("success callback here");
+    },
+    error: function(data){
+        console.log("error callback here");
+    }
+}
+```
+Callback is optional parameter for API methods.
 
-- Once this code is put, you can use various API calls below for analytics, and for pushing contact data from website to Agile. 
+#Usage
 
-#### Pushing contact data to Agile
+###0. Tracking website visitors
 
-When a website visitor fills a form with his email and other information, you can add the visitor as a contact in Agile, with the following method.
+The API call for tracking is ```_agile.track_page_view(callback)``` it is included by default in the analytics code that you need to embed in the html of your webpage to enable API methods / tracking in general.
+
+- But to begin tracking a particular contact you need to call ```_agile.set_email```, with the email address of the contact.
+
+- Typically, once a visitor fills a form on your website, you should call ```_agile.create_contact``` and ```_agile.set_email```.
+
+- Once this is done, you will start getting real-time notifications on Agile whenever the contact is on your website. You will also see website visits in Timeline and in Webstats tab for that contact.
+
+###1.Email
+#### 1.1 Set Email
+
+To set contact email, for API execution and to begin tracking. API calls will not function if contact email is not set, so ```_agile.set_email``` is mandatory before executing the API.
+
+- Parameters : contact email
+
+```javascript
+_agile.set_email("contact@test.com");
+```
+###2. Contact
+#### 2.1 Create Contact
+
+To create contact. Contact properties are *first_name*, *last_name*, *email*, *company*, *website*, *title*, *tags*, *phone*, *address*.
+
+- Parameters : contact, callback
 
 ```javascript
 var contact = {};
-
-contact.email = "jim@example.com";
-contact.first_name = "Jim";
-contact.last_name = "Brown";
+contact.email = "contact@test.com";
+contact.first_name = "Test";
+contact.last_name = "Contact";
 contact.company = "abc corp";
 contact.title = "lead";
 contact.phone = "+1-541-754-3010";
 contact.website = "http://www.example.com";
-contact.tags = "tag1, tag2";
 contact.address = "{\"city\":\"new delhi\",\"state\":\"delhi\",\"country\":\"india\"}";
+contact.tags = "tag1, tag2";
 
 _agile.create_contact(contact, {
-    success: function (data)
-    {
-        console.log("success callback");
+    success: function (data) {
+        console.log("success");
     },
-    error: function (data)
-    {
-        console.log("error callback");
+    error: function (data) {
+        console.log("error");
     }
 });
 ```
-- Email is mandatory and all other data is optional. The optional “tags” should be followed by a comma separated string of all tags you want to add to the contact being created.
+####2.2 Get Contact
 
-#### Setting a contact property
+Contact can be searched based on email address.
 
-You can update a contact's property with the following call.
+- Parameters : contact email, callback
 
 ```javascript
-var property= {};
-property.name = "field_name";
-property.value = "field_value";
-
-_agile.set_property(property, {
-    success: function (data)
-    {
+_agile.get_contact("contact@test.com", {
+    success: function (data) {
         console.log("success callback");
     },
-    error: function (data)
-    {
+    error: function (data) {
         console.log("error callback");
     }
 });
 ```
+####2.3 Delete Contact
 
-- field_name can be one of *'first_name', 'last_name', 'email', 'phone', 'website', 'company', 'title', 'address'*.
+Deletes a contact based on email.
 
-- It can also be the name of a *Custom Field* that you defined.
+- Parameters : contact email, callback
 
-- Some fields are multi-valued and have a ‘type’. For example, 'email' can be of type 'work'or 'personal'
+```javascript
+_agile.delete_contact("contact@test.com", {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
 
-- To set the type, you can pass the and additional key value pair in the json
+####2.4 Update Contact
+
+Updates the contact with given JSON data.
+
+- Parameters : contact data, callback
+
+```javascript
+_agile.update_contact({
+    "title": "lead",
+    "website": "http://www.example.com"
+}, {
+    success: function (data) {
+        console.log("success callback");
+    },
+    error: function (data) {
+        console.log("error callback");
+    }
+});
+```
+####2.5 Set Contact Property
+
+To add new or update existing contact property (*first_name*, *last_name*, *title*, *company*, *website*, *phone*, *address*) or any CUSTOM contact property.
+
+Some fields are multi-valued and have *type*. For example, *email* can be of type *work* or *personal*. 
+
+To set the type, property object must have an additional attribute *type* like
+```property.type = "work";```. If you pass JSON directly then you need to include an additional key value pair like
 
 ```json
 {
-	"name": "field_name",
+    "name": "field_name",
 	"value": "field_value",
 	"type": "field_type"
 }
 ```
-The list of possible 'type' for various fields are as mentioned below:
+The list of possible *type* for various fields are as mentioned below:
+- email \- work | personal
+- phone \- work | home | mobile | main | home fax | work fax |other
+- website \- website | skype | twitter | linkedin | facebook | xing | blog | google+ | flickr | github | youtube
+- address \- home | postal | office
 
- - email \- work | personal
 
- - phone \- work | home | mobile | main | home fax | work fax |other
-
- - website \- website | skype | twitter | linkedin | facebook | xing | blog | google+ | flickr | github | youtube
-
- - address \- home | postal | office
-
-#### Tracking website visitors
-To track visitors on your website / application, you can use the call.
+- Parameters : property, callback
 
 ```javascript
-_agile.track_page_view(
-{
-	success: function(data)
-	{
-		console.log("success callback");
-	},
-	error: function(data)
-	{
-		console.log("error callback");
-	}
+var property = {};
+property.name = "abc account";
+property.value = "premium";
+
+_agile.set_property(property, {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
 });
 ```
-- But for this to work, you need to first let Agile know the email address of the website visitor.
+####2.6 Get Contact Property
 
-- If you know the email address of the visitor (when the visitor fills the contact form) you should make the following call.
+To get contact property value based on name of the property, and email.
 
-```javascript
-_agile.set_email(visitor_email);
-```
-- Ideally, this needs to be done only once for each of your site visitors.
-
-- Agile stores the email address in the browser cookies and uses it for all subsequent API calls made wherever email address is not provided explicitly.
-
-- Typically, once a visitor fills a form on your website, you should call  ```_agile.create_contact```,
-  and also call  ```_agile.set_email```.
-
-- Once this is done, you will start getting real-time notifications on Agile whenever the contact is on your website.
-  You will also see his website visits in Timeline & Webstats tabs for that contact.
-
-#### Scoring & segmenting contacts 
-
-You can score your leads/contacts when they visit a particular web page using the call below.
+- Parameters : property name (string), callback
 
 ```javascript
-_agile.add_score(10, {
-	success: function(data)
-	{
-		console.log("success callback");
-	},
-	error: function(data)
-	{
-		console.log("error callback");
-	}
+_agile.get_property("title", {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
 });
 ```
-You can segment your contacts based on pages visited or options they choose on your website using the code below. You can specify a list of tags.
+
+####2.7 Remove Contact Property
+
+To remove contact property based on name of the property and email set earlier using ```_agile.set_email```.
+
+- Parameters : property name (string), callback
 
 ```javascript
-_agile.add_tag('tag1, tag2, tag3', {
-	success: function(data)
-	{
-		console.log("success callback");
-	},
-	error: function(data)
-	{
-		console.log("error callback");
-	}
+_agile.remove_property("title", {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
 });
 ```
-- **Note**: These methods will work only if you have called ```_agile.set_email```  method earlier to store the email address of the contact in the cookie.
-Please check the **Tracking website visitors** section for more information on ```_agile.set_email``` method. 
+###3. Tags
 
-#### Adding Note, Task or Deal to contact
+####3.1 Add Tags
 
-You have set email, using ```_agile.set_email``` before calling the below API calls.
+Adds tags to the contact based on the email set earlier using ```_agile.set_email```. 
 
-To add a note to contact
+- Parameters : tags, callback
+
+```javascript
+_agile.add_tag('tag1, tag2, tag3, tag4, tag5', {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
+####3.2 Remove Tags
+
+Removes tags from the contact based on email address set using ```_agile.set_email``` before.
+
+- Parameters : tags, callback
+
+```javascript
+_agile.remove_tag('tag3, tag4, tag5', {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
+####3.3 Get Tags
+
+Gets the tags associated with the contact, based on the email address, set earlier using ```_agile.set_email```.
+
+- Parameters : callback 
+
+```javascript
+_agile.get_tags({
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
+###4. Score
+####4.1 Add Score
+
+Add score to contact based on email address set, using ```_agile.set_email``` before making this API call.
+
+- Parameters : score, callback
+
+```javascript
+_agile.add_score(50, {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
+####4.2 Subtract Score
+
+Subtract score of a contact based on email address set, using ```_agile.set_email``` before.
+
+- Parameters : score, callback
+
+```javascript
+_agile.substract_score(5, {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
+####4.3 Get Score
+
+Get score associated with contact, set using ```_agile.set_email```.
+
+- Parameters : callback
+
+```javascript
+_agile.get_score({
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
+###5. Task
+####5.1 Add Task
+
+Add task to contact, set earlier using ```_agile.set_email```. Task object has the properties as *type* with values as [*CALL* | *EMAIL* | *FOLLOW_UP* | *MEETING* | *MILESTONE* | *SEND* | *TWEET*], *priority_type* with values as [*HIGH* | *NORMAL* | *LOW*], *subject* the subject of task and *due* which is the due date for the task.
+
+- Parameters : task, callback
+
+```javascript
+var task = {};
+task.type = "MEETING";
+task.priority_type = "HIGH";
+task.subject = "Sample Task";
+task.due = "1376047332";
+}
+
+_agile.add_task(task, {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
+####5.2 Get Tasks
+
+Get the tasks data associated with contact, based on email set in cookie, using _agile.set_email before calling this API method.
+
+- Parameters : callback
+
+```javascript
+_agile.get_tasks({
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
+###6. Note
+####6.1 Add Note
+
+Creates a new note. Note object has the properties *subject* the subject of the note, and *description* note description. Requires ```_agile.set_email``` before to set contact.
+
+- Parameters : note, callback
 
 ```javascript
 var note = {};
@@ -176,71 +355,93 @@ note.subject = "Test Note";
 note.description = "This is a test note";
 
 _agile.add_note(note, {
-	success: function(data)
-	{
-		console.log("success callback");
-	},
-	error: function(data)
-	{
-		console.log("error callback");
-	}
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
 });
 ```
+####6.2 Get Notes
 
-To add task to contact
+Get all the notes data associated with the contact set, using the ```_agile.set_email``` before calling this API method.
+
+- Parameters : callback
 
 ```javascript
-var task = {};
-task.type = "MEETING";
-task.priority_type = "HIGH";
-task.subject = "This is a test task";
-task.due = "1376047332";
-
-_agile.add_task(task, {
-	success: function(data)
-	{
-		console.log("success callback");
-	},
-	error: function(data)
-	{
-		console.log("error callback");
-	}
+_agile.get_notes({
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
 });
 ```
+###7. Deal
+####7.1 Add Deal
 
-You can add deal to contact, here close date is specified as epoch time.
+Add deal to contact. You need to set contact email using ```_agile.set_email``` before calling the API method. Deal object has the properties *name* name of the deal, *description* deal description, *expected_value*, *milestone*, *probability* and *close_date*.
+
+- Parameters : deal, callback
 
 ```javascript
 var deal = {};
 deal.name = "Test Deal";
 deal.description = "This is a test deal";
-deal.expected_value = "100";
+deal.expected_value = "10000";
 deal.milestone = "won";
-deal.probability = "5";
+deal.probability = "95";
 deal.close_date = "1376047332";
 
 _agile.add_deal(deal, {
-    success: function (data)
-    {
-        console.log("success callback");
+    success: function (data) {
+        console.log("success");
     },
-    error: function (data)
-    {
-        console.log("error callback");
+    error: function (data) {
+        console.log("error");
     }
 });
 ```
+####7.2 Get Deals
 
-- **Note**: These methods will work only if you have called  ```_agile.set_email```  method earlier to store the email address of the contact in the cookie.
-Please check the **Tracking website visitors** section for more information on ```_agile.set_email``` method. 
+Gets all deals data related to contact, based on email set using ``_agile.set_email``` before.
 
-#### Execute multiple API calls simultaneously
+- Parameters : callback
 
-- To execute multiple API calls simultaneously, you need to nest the API call in the success callback of the previous API call. ```_agile.set_email``` must be called before looping the API calls in the success callbacks, to ensure email is stored in the cookie and is available for API execution.
+```javascript
+_agile.get_deals({
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
+###8. Create Company
 
-- Agile CRM uses multiple databases for redundancy. Hence, the reads are not available after immediate writes. This can cause few of your calls to fail if called in succession.
+Add company as contact. Company object has the properties *name*, *phone*, *url*, *address*.
 
-- Example to create contact and add score, you should use the success callback of ```_agile_create_contact``` to call ```_agile.add_score```. This ensures that the score is appropriately added. Also you need to set contact email using ```_agile.set_email``` before.
- 
+- Parameters : company, callback
 
-See [create_contact.html](https://github.com/agilecrm/javascript-api/blob/master/create_contact.html) and [all.html](https://github.com/agilecrm/javascript-api/blob/master/all.html) for example implementations of all available API
+```javascript
+var company = {};
+company.name = "abc inc";
+company.phone = "+1-541-754-3010";
+company.url = "http://www.abc-inc.com";
+company.address = "{\"city\": \"new delhi\",\"state\": \"delhi\",\"country\": \"india\"}";
+
+_agile.create_company(company, {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
+##More
+
+You may refer to [create_contact.html](https://github.com/agilecrm/javascript-api/blob/master/create_contact.html) and [all.html](https://github.com/agilecrm/javascript-api/blob/master/all.html) for example implementation of multiple API methods simultaneously. 
