@@ -7,12 +7,13 @@ You need to have an agile account to use the API.
 Create an account at https://www.agilecrm.com
 
 # Important Info
-
+#### Setting API & Analytics
 - You may access the analytics code from ***Admin Settings -> API & Analytics -> Analytics Code***
 - Copy the 6 lines of script and paste in it in your webpage's HTML just before the ```</BODY>``` tag, for which you need API methods and / or tracking.
 
 ![Finding Analytics Code] (https://raw.github.com/agilecrm/javascript-api/master/analytics_code.png)
 
+#### NOTE
 - Contact email must be set once using ```_agile.set_email``` method before calling the API, to ensure that email is stored in the cookie and is available for API execution.
 - To execute multiple API simultaneously, you need to place the API call in the success callback of the previous API call.
 - Format of callback is 
@@ -318,7 +319,6 @@ task.type = "MEETING";
 task.priority_type = "HIGH";
 task.subject = "Sample Task";
 task.due = "1376047332";
-}
 
 _agile.add_task(task, {
     success: function (data) {
