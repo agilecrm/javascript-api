@@ -9,7 +9,7 @@ Create an account at https://www.agilecrm.com
 # Important Info
 
 - You may access the analytics code from ***Admin Settings -> API & Analytics -> Analytics Code***
-- Copy the 6 lines of code and paste in it in your webpage's HTML just before the ```</BODY>``` tag, for which you need API methods and / or tracking.
+- Copy the 6 lines of script and paste in it in your webpage's HTML just before the ```</BODY>``` tag, for which you need API methods and / or tracking.
 
 ![Finding Analytics Code] (https://raw.github.com/agilecrm/javascript-api/master/analytics_code.png)
 
@@ -31,9 +31,9 @@ Callback is optional parameter for API methods.
 
 #Usage
 
-###0. Tracking website visitors
+###0.Tracking website visitors
 
-The API call for tracking is ```_agile.track_page_view(callback)``` it is included by default in the analytics code that you need to embed in the html of your webpage to enable API methods / tracking in general.
+The API call for tracking is ```_agile.track_page_view(callback)``` it is included by default in the analytics script that you need to embed in the html of your webpage to enable API methods / tracking in general.
 
 - But to begin tracking a particular contact you need to call ```_agile.set_email```, with the email address of the contact.
 
@@ -51,7 +51,7 @@ To set contact email, for API execution and to begin tracking. API calls will no
 ```javascript
 _agile.set_email("contact@test.com");
 ```
-###2. Contact
+###2.Contact
 #### 2.1 Create Contact
 
 To create contact. Contact properties are **first_name**, **last_name**, **email**, **company**, **website**, **title**, **tags**, **phone**, **address**.
@@ -204,7 +204,7 @@ _agile.remove_property("title", {
     }
 });
 ```
-###3. Tags
+###3.Tags
 
 ####3.1 Add Tags
 
@@ -254,7 +254,7 @@ _agile.get_tags({
     }
 });
 ```
-###4. Score
+###4.Score
 ####4.1 Add Score
 
 Add score to contact based on email address set, using ```_agile.set_email``` before making this API call.
@@ -303,7 +303,7 @@ _agile.get_score({
     }
 });
 ```
-###5. Task
+###5.Task
 ####5.1 Add Task
 
 Add task to contact, set earlier using ```_agile.set_email```.
@@ -345,7 +345,7 @@ _agile.get_tasks({
     }
 });
 ```
-###6. Note
+###6.Note
 ####6.1 Add Note
 
 Creates a new note. Note object has the properties **subject** the subject of the note, and **description** note description. Requires ```_agile.set_email``` before to set contact.
@@ -382,7 +382,7 @@ _agile.get_notes({
     }
 });
 ```
-###7. Deal
+###7.Deal
 ####7.1 Add Deal
 
 Add deal to contact. You need to set contact email using ```_agile.set_email``` before calling the API method. Deal object has the properties **name** name of the deal, **description** deal description, **expected_value**, **milestone**, **probability** and **close_date**.
@@ -423,7 +423,7 @@ _agile.get_deals({
     }
 });
 ```
-###8. Create Company
+###8.Create Company
 
 Add company as contact. Company object has the properties **name**, **phone**, **url**, **address**.
 
