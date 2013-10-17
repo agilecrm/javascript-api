@@ -54,7 +54,7 @@ _agile.set_email("contact@test.com");
 ###2. Contact
 #### 2.1 Create Contact
 
-To create contact. Contact properties are *first_name*, *last_name*, *email*, *company*, *website*, *title*, *tags*, *phone*, *address*.
+To create contact. Contact properties are **first_name**, **last_name**, **email**, **company**, **website**, **title**, **tags**, **phone**, **address**.
 
 - Parameters : contact, callback
 
@@ -88,10 +88,10 @@ Contact can be searched based on email address.
 ```javascript
 _agile.get_contact("contact@test.com", {
     success: function (data) {
-        console.log("success callback");
+        console.log("success");
     },
     error: function (data) {
-        console.log("error callback");
+        console.log("error");
     }
 });
 ```
@@ -124,10 +124,10 @@ _agile.update_contact({
     "website": "http://www.example.com"
 }, {
     success: function (data) {
-        console.log("success callback");
+        console.log("success");
     },
     error: function (data) {
-        console.log("error callback");
+        console.log("error");
     }
 });
 ```
@@ -135,9 +135,9 @@ _agile.update_contact({
 
 To add new or update existing contact property (*first_name*, *last_name*, *title*, *company*, *website*, *phone*, *address*) or any CUSTOM contact property.
 
-Some fields are multi-valued and have *type*. For example, *email* can be of type *work* or *personal*. 
+Some fields are multi-valued and have **type**. For example, *email* can be of type *work* or *personal*. 
 
-To set the type, property object must have an additional attribute *type* like
+To set the type, property object must have an additional attribute **type** like
 ```property.type = "work";```. If you pass JSON directly then you need to include an additional key value pair like
 
 ```json
@@ -147,12 +147,13 @@ To set the type, property object must have an additional attribute *type* like
 	"type": "field_type"
 }
 ```
-The list of possible *type* for various fields are as mentioned below:
+The list of possible **type** for various fields are as mentioned below:
 - email \- work | personal
-- phone \- work | home | mobile | main | home fax | work fax |other
-- website \- website | skype | twitter | linkedin | facebook | xing | blog | google+ | flickr | github | youtube
-- address \- home | postal | office
 
+- phone \- work | home | mobile | main | home fax | work fax |other
+
+- address \- home | postal | office
+- website \- website | skype | twitter | linkedin | facebook | xing | blog | google+ | flickr | github | youtube
 
 - Parameters : property, callback
 
@@ -305,7 +306,9 @@ _agile.get_score({
 ###5. Task
 ####5.1 Add Task
 
-Add task to contact, set earlier using ```_agile.set_email```. Task object has the properties as *type* with values as [*CALL* | *EMAIL* | *FOLLOW_UP* | *MEETING* | *MILESTONE* | *SEND* | *TWEET*], *priority_type* with values as [*HIGH* | *NORMAL* | *LOW*], *subject* the subject of task and *due* which is the due date for the task.
+Add task to contact, set earlier using ```_agile.set_email```.
+
+Task object has the properties **type** with values as *CALL* | *EMAIL* | *FOLLOW_UP* | *MEETING* | *MILESTONE* | *SEND* | *TWEET*, **priority_type** with values as *HIGH* | *NORMAL* | *LOW*, **subject** the subject of task and **due** which is the due date for the task.
 
 - Parameters : task, callback
 
@@ -328,7 +331,7 @@ _agile.add_task(task, {
 ```
 ####5.2 Get Tasks
 
-Get the tasks data associated with contact, based on email set in cookie, using _agile.set_email before calling this API method.
+Get the tasks data associated with contact, based on email set in cookie, using ```_agile.set_email``` before calling this API method.
 
 - Parameters : callback
 
@@ -345,7 +348,7 @@ _agile.get_tasks({
 ###6. Note
 ####6.1 Add Note
 
-Creates a new note. Note object has the properties *subject* the subject of the note, and *description* note description. Requires ```_agile.set_email``` before to set contact.
+Creates a new note. Note object has the properties **subject** the subject of the note, and **description** note description. Requires ```_agile.set_email``` before to set contact.
 
 - Parameters : note, callback
 
@@ -382,7 +385,7 @@ _agile.get_notes({
 ###7. Deal
 ####7.1 Add Deal
 
-Add deal to contact. You need to set contact email using ```_agile.set_email``` before calling the API method. Deal object has the properties *name* name of the deal, *description* deal description, *expected_value*, *milestone*, *probability* and *close_date*.
+Add deal to contact. You need to set contact email using ```_agile.set_email``` before calling the API method. Deal object has the properties **name** name of the deal, **description** deal description, **expected_value**, **milestone**, **probability** and **close_date**.
 
 - Parameters : deal, callback
 
@@ -406,7 +409,7 @@ _agile.add_deal(deal, {
 ```
 ####7.2 Get Deals
 
-Gets all deals data related to contact, based on email set using ``_agile.set_email``` before.
+Gets all deals data related to contact, based on email set using ```_agile.set_email``` before.
 
 - Parameters : callback
 
@@ -422,7 +425,7 @@ _agile.get_deals({
 ```
 ###8. Create Company
 
-Add company as contact. Company object has the properties *name*, *phone*, *url*, *address*.
+Add company as contact. Company object has the properties **name**, **phone**, **url**, **address**.
 
 - Parameters : company, callback
 
