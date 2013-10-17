@@ -4,12 +4,12 @@
   </head>
   
   <body>
-    // Set your AgileCRM domain name
+    						<!--Set your AgileCRM domain name-->
     <script type="text/javascript" src="https://YOUR_DOMAIN.agilecrm.com/stats/min/agile-min.js">
     </script>
     <script type="text/javascript">
-    _agile.set_account('YOUR_API_KEY', 'YOUR_DOMAIN'); // Set Agile CRM account
-	_agile.track_page_view(); 						   // Track contact
+    _agile.set_account('YOUR_API_KEY', 'YOUR_DOMAIN'); // Set your AgileCRM API Key and domain name
+    _agile.track_page_view();
     </script>
     
     <script type="text/javascript">
@@ -38,7 +38,7 @@ function create_contact() {
 
         success: function add_tag() {
 
-          _agile.add_tag('tag2, tag3, tag4', {
+          _agile.add_tag('tag2, tag3, tag4, tag5', {
 
             success: function add_note() {
 
@@ -102,8 +102,8 @@ function create_contact() {
     </script>
     Agile CRM JavaScript API Test
     <script type="text/javascript">
-    set_email(); 		// Set contact (for tracking and API execution)
-	create_contact(); 	// Includes functions to add score, tags, note, task & deal
+    set_email();	// Set contact (to track and execute API on contact)
+    create_contact();	// Includes functions to add score, tags, note, task & deal
     </script>
   </body>
 
