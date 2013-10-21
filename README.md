@@ -32,25 +32,28 @@ Callback is optional parameter for API methods.
 
 #Usage
 
-###0.Tracking website visitors
+###1.Tracking website visitors
 
 You can track the visitors to your website by adding the 6 lines of code you see above - which includes the ```_agile.track_page_view``` call. 
 But for this to work, you need to call ```_agile.set_email```, with the email address of site visitor (when he fills a form etc).
 Typically, once a visitor fills a form on your website, you should call ```_agile.create_contact``` and ```_agile.set_email```.
 
 Once this is done, you will start getting real-time notifications on Agile whenever the contact is on your website. You will also see website visits in Timeline and in Webstats tab for that contact.
-Agile also tracks anonymous visitors (i.e visitors for whom you have not called ```_agile.set_email```), and once the vistor fills a from and you do a create_contact, set_email, all the previous web history is attached to the contact.
+Agile also tracks anonymous visitors (i.e visitors for whom you have not called ```_agile.set_email```), and once the vistor fills a form and you do a create_contact, set_email, all the previous web history is attached to the contact.
 
-###1.Email
-#### 1.1 Set Email
+#### 1.1 Seting Email of the page visitor
 
-To set contact email, for API execution and to begin tracking. API calls will not function if contact email is not set, so ```_agile.set_email``` is mandatory before executing the API.
+To set the tracking cookie for the visitor, use the API call below
 
 - Parameters : contact email
 
 ```javascript
 _agile.set_email("contact@test.com");
 ```
+
+Note: This call is mandatory for all the rest of the API calls to work. They all use the email id set here to add/update the contact's info and associated data.
+
+
 ###2.Contact
 #### 2.1 Create Contact
 
