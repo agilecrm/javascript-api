@@ -14,7 +14,7 @@ Create an account at https://www.agilecrm.com
 ![Finding Analytics Code] (https://raw.github.com/agilecrm/javascript-api/master/analytics_code.png)
 
 ### Things you should know
-- Our JS api is meant for pushing/pulling data from your website/application to Agile CRM 
+- Our JS API is meant for pushing / pulling data from your website / application to Agile CRM 
 - All API calls are Asynchronous
 - To execute multiple API calls simultaneously, you need to place the subsequent API call in the success callback of the previous call.
 
@@ -39,7 +39,7 @@ To set the tracking cookie for the visitor, use the API call below
 _agile.set_email("contact@test.com");
 ```
 
-Note: This call is mandatory for all the rest of the API calls to work. They all use the email id set here to add/update the contact's info and associated data.
+**Note: This call is mandatory for API calls to work. They all use the email address set here to add / update the contact info and associated data.**
 
 
 ###2.Contact
@@ -47,7 +47,7 @@ Note: This call is mandatory for all the rest of the API calls to work. They all
 
 To create contact. Contact properties are **first_name**, **last_name**, **email**, **company**, **website**, **title**, **tags**, **phone**, **address**.
 
-- Parameters : contact, callback
+- Parameters : contact, callback object (optional)
 
 ```javascript
 var contact = {};
@@ -58,7 +58,8 @@ contact.company = "abc corp";
 contact.title = "lead";
 contact.phone = "+1-541-754-3010";
 contact.website = "http://www.example.com";
-contact.address = "{\"city\":\"new delhi\",\"state\":\"delhi\",\"country\":\"india\"}";
+var address = {"city":"new delhi", "state":"delhi", "country":"india"};
+contact.address = JSON.stringify(address);
 contact.tags = "tag1, tag2";
 
 _agile.create_contact(contact, {
@@ -72,9 +73,9 @@ _agile.create_contact(contact, {
 ```
 ####2.2 Get Contact
 
-Contact can be searched based on email address.
+Contact can be searched (based on email already set using ```_agile.set_email```)..
 
-- Parameters : contact email, callback
+- Parameters : contact email, callback object (optional)
 
 ```javascript
 _agile.get_contact("contact@test.com", {
@@ -88,9 +89,9 @@ _agile.get_contact("contact@test.com", {
 ```
 ####2.3 Delete Contact
 
-Deletes a contact based on email.
+Deletes a contact (based on email already set using ```_agile.set_email```).
 
-- Parameters : contact email, callback
+- Parameters : contact email, callback object (optional)
 
 ```javascript
 _agile.delete_contact("contact@test.com", {
@@ -105,9 +106,9 @@ _agile.delete_contact("contact@test.com", {
 
 ####2.4 Update Contact
 
-Updates the contact with given JSON data.
+Updates the contact with given JSON data (based on email already set using ```_agile.set_email```).
 
-- Parameters : contact data, callback
+- Parameters : contact data, callback object (optional)
 
 ```javascript
 _agile.update_contact({
@@ -124,7 +125,25 @@ _agile.update_contact({
 ```
 ####2.5 Set Contact Property
 
-To add new or update existing contact property (*first_name*, *last_name*, *title*, *company*, *website*, *phone*, *address*) or any CUSTOM contact property.
+To add new or update existing contact property (*first_name*, *last_name*, *title*, *company*, *website*, *phone*, *address*) or any CUSTOM contact property (based on email already set using ```_agile.set_email```).
+
+
+- Parameters : property, callback object (optional)
+
+```javascript
+var property = {};
+property.name = "abc account";
+property.value = "premium";
+
+_agile.set_property(property, {
+    success: function (data) {
+        console.log("success");
+    },
+    error: function (data) {
+        console.log("error");
+    }
+});
+```
 
 Some fields are multi-valued and have **type**. For example, *email* can be of type *work* or *personal*. 
 
@@ -146,12 +165,14 @@ The list of possible **type** for various fields are as mentioned below:
 - address \- home | postal | office
 - website \- website | skype | twitter | linkedin | facebook | xing | blog | google+ | flickr | github | youtube
 
-- Parameters : property, callback
+Below is an example API call to add / replace (if exists) office address to a contact (based on email already set using ```_agile.set_email```).
 
 ```javascript
 var property = {};
-property.name = "abc account";
-property.value = "premium";
+property.name = "address";
+var address = {"city":"new delhi", "state":"delhi", "country":"india"};
+property.value = JSON.stringify(address);
+property.type = "office";
 
 _agile.set_property(property, {
     success: function (data) {
@@ -164,9 +185,9 @@ _agile.set_property(property, {
 ```
 ####2.6 Get Contact Property
 
-To get contact property value based on name of the property, and email.
+To get contact property value based on name of the property, and email set earlier using ```_agile.set_email```.
 
-- Parameters : property name (string), callback
+- Parameters : property name (string), callback object (optional)
 
 ```javascript
 _agile.get_property("title", {
@@ -183,7 +204,7 @@ _agile.get_property("title", {
 
 To remove contact property based on name of the property and email set earlier using ```_agile.set_email```.
 
-- Parameters : property name (string), callback
+- Parameters : property name (string), callback object (optional)
 
 ```javascript
 _agile.remove_property("title", {
@@ -199,9 +220,9 @@ _agile.remove_property("title", {
 
 ####3.1 Add Tags
 
-Adds tags to the contact based on the email set earlier using ```_agile.set_email```. 
+Adds tags to the contact (based on email already set using ```_agile.set_email```). 
 
-- Parameters : tags, callback
+- Parameters : tags, callback object (optional)
 
 ```javascript
 _agile.add_tag('tag1, tag2, tag3, tag4, tag5', {
@@ -215,9 +236,9 @@ _agile.add_tag('tag1, tag2, tag3, tag4, tag5', {
 ```
 ####3.2 Remove Tags
 
-Removes tags from the contact based on email address set using ```_agile.set_email``` before.
+Removes tags from the contact (based on email already set using ```_agile.set_email```).
 
-- Parameters : tags, callback
+- Parameters : tags, callback object (optional)
 
 ```javascript
 _agile.remove_tag('tag3, tag4, tag5', {
@@ -231,9 +252,9 @@ _agile.remove_tag('tag3, tag4, tag5', {
 ```
 ####3.3 Get Tags
 
-Gets the tags associated with the contact, based on the email address, set earlier using ```_agile.set_email```.
+Gets the tags associated with the contact (based on email already set using ```_agile.set_email```).
 
-- Parameters : callback 
+- Parameters : callback object (optional) 
 
 ```javascript
 _agile.get_tags({
@@ -248,9 +269,9 @@ _agile.get_tags({
 ###4.Score
 ####4.1 Add Score
 
-Add score to contact based on email address set, using ```_agile.set_email``` before making this API call.
+Add score to contact (based on email already set using ```_agile.set_email```).
 
-- Parameters : score, callback
+- Parameters : score, callback object (optional)
 
 ```javascript
 _agile.add_score(50, {
@@ -264,9 +285,9 @@ _agile.add_score(50, {
 ```
 ####4.2 Subtract Score
 
-Subtract score of a contact based on email address set, using ```_agile.set_email``` before.
+Subtract score of a contact (based on email already set using ```_agile.set_email```).
 
-- Parameters : score, callback
+- Parameters : score, callback object (optional)
 
 ```javascript
 _agile.substract_score(5, {
@@ -280,9 +301,9 @@ _agile.substract_score(5, {
 ```
 ####4.3 Get Score
 
-Get score associated with contact set earlier, using ```_agile.set_email```.
+Get score associated with contact (based on email already set using ```_agile.set_email```).
 
-- Parameters : callback
+- Parameters : callback object (optional)
 
 ```javascript
 _agile.get_score({
@@ -297,18 +318,24 @@ _agile.get_score({
 ###5.Task
 ####5.1 Add Task
 
-Add task to contact set earlier, using ```_agile.set_email```.
+Add task to contact (based on email already set using ```_agile.set_email```).
 
-Task object has the properties **type** with values as *CALL* | *EMAIL* | *FOLLOW_UP* | *MEETING* | *MILESTONE* | *SEND* | *TWEET*, **priority_type** with values as *HIGH* | *NORMAL* | *LOW*, **subject** the subject of task and **due** which is the due date for the task.
+Task object has the following attributes
 
-- Parameters : task, callback
+**type** with values as *CALL* | *EMAIL* | *FOLLOW_UP* | *MEETING* | *MILESTONE* | *SEND* | *TWEET*,
+
+**priority_type** with values as *HIGH* | *NORMAL* | *LOW*, **subject** the subject of task and
+
+**due** which is the due date for the task.
+
+- Parameters : task, callback object (optional)
 
 ```javascript
 var task = {};
 task.type = "MEETING";
 task.priority_type = "HIGH";
 task.subject = "Sample Task";
-task.due = "1376047332";
+task.due = "1376047332";	// Epoch time
 
 _agile.add_task(task, {
     success: function (data) {
@@ -321,9 +348,9 @@ _agile.add_task(task, {
 ```
 ####5.2 Get Tasks
 
-Get the tasks data associated with contact, based on email set in cookie, using ```_agile.set_email``` before calling this API method.
+Get the tasks data associated with contact (based on email already set using ```_agile.set_email```).
 
-- Parameters : callback
+- Parameters : callback object (optional)
 
 ```javascript
 _agile.get_tasks({
@@ -338,9 +365,9 @@ _agile.get_tasks({
 ###6.Note
 ####6.1 Add Note
 
-Creates a new note. Note object has the properties **subject** the subject of the note, and **description** note description. Requires ```_agile.set_email``` before to set contact.
+Creates a new note (based on email already set using ```_agile.set_email```). Note object has the properties **subject** the subject of the note, and **description** note description.
 
-- Parameters : note, callback
+- Parameters : note, callback object (optional)
 
 ```javascript
 var note = {};
@@ -358,9 +385,9 @@ _agile.add_note(note, {
 ```
 ####6.2 Get Notes
 
-Get all the notes data associated with the contact set, using the ```_agile.set_email``` before calling this API method.
+Get all the notes data associated with the contact (based on email already set using ```_agile.set_email```).
 
-- Parameters : callback
+- Parameters : callback object (optional)
 
 ```javascript
 _agile.get_notes({
@@ -375,9 +402,9 @@ _agile.get_notes({
 ###7.Deal
 ####7.1 Add Deal
 
-Add deal to contact. You need to set contact email using ```_agile.set_email``` before calling the API method. Deal object has the properties **name** name of the deal, **description** deal description, **expected_value**, **milestone**, **probability** and **close_date**.
+Add deal to contact (based on email already set using ```_agile.set_email```). Deal object has the properties **name** name of the deal, **description** deal description, **expected_value**, **milestone**, **probability** and **close_date**.
 
-- Parameters : deal, callback
+- Parameters : deal, callback object (optional)
 
 ```javascript
 var deal = {};
@@ -386,7 +413,7 @@ deal.description = "This is a test deal";
 deal.expected_value = "10000";
 deal.milestone = "won";
 deal.probability = "95";
-deal.close_date = "1376047332";
+deal.close_date = "1376047332";		// Epoch time
 
 _agile.add_deal(deal, {
     success: function (data) {
@@ -399,9 +426,9 @@ _agile.add_deal(deal, {
 ```
 ####7.2 Get Deals
 
-Gets all deals data related to contact, based on email set using ```_agile.set_email``` before.
+Gets all deals data related to contact (based on email already set using ```_agile.set_email```)
 
-- Parameters : callback
+- Parameters : callback object (optional)
 
 ```javascript
 _agile.get_deals({
@@ -417,14 +444,15 @@ _agile.get_deals({
 
 Add company as contact. Company object has the properties **name**, **phone**, **url**, **address**.
 
-- Parameters : company, callback
+- Parameters : company, callback object (optional)
 
 ```javascript
 var company = {};
 company.name = "abc inc";
 company.phone = "+1-541-754-3010";
 company.url = "http://www.abc-inc.com";
-company.address = "{\"city\":\"new delhi\",\"state\":\"delhi\",\"country\":\"india\"}";
+var address = {"city":"new delhi", "state":"delhi", "country":"india"};
+company.address = JSON.stringify(address);
 
 _agile.create_company(company, {
     success: function (data) {
