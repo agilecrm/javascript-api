@@ -32,6 +32,9 @@ Agile tracks contacts automatically from the emails clicks if you have tracking 
 
 Agile tracks the page views for each session for each contact. The visitor is tracked as anonymous unless a set_email is done.  The correct step is to set_email and then track_page_view. Anonymous users are tracked and backtracked when a user email is added using set_email. All the old page views are attributed to the new email address. This is often the case where the user browses many sessions and then signups for your product or provides the email in the landing pages during product download.
 
+###2. Email Override
+
+If a new email address is provided, Agile treats them as a new user and the sessions are tracked for the new user. The old page views are still valid for the old email and can be accessed from Agile dashboard.
 
 #API Usage
 
