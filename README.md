@@ -13,7 +13,7 @@ Create an account at https://www.agilecrm.com
 
 ![Finding Analytics Code] (https://raw.github.com/agilecrm/javascript-api/master/analytics_code.png)
 
-### Things you should know
+### Tips
 - Our JS API is meant for pushing / pulling data from your website / application to Agile CRM 
 - All API calls are Asynchronous
 - To execute multiple API calls simultaneously, you need to place the subsequent API call in the success callback of the previous call.
@@ -23,10 +23,10 @@ Create an account at https://www.agilecrm.com
 ###1. Tracking Contacts: 
 
 ```javascript
-_set_email('xxxx')
+agile.set_email('xxxx')
 ```
 
-Agile tracks contacts automatically from the emails clicks if you have tracking enabled (track and push) in your outbound emails in the campaigns or one-on-one emails. This step is not required unless you have a landing form or offer custom login for you application. Agile sets a cookie for a validity is for one full year. You do not have to do set_email for every visit. 
+Agile tracks contacts automatically from the emails clicks if you have tracking enabled (track and push) in your outbound emails in the campaigns or one-on-one emails. This step is not required unless you have a landing form or offer custom login for your application. Agile sets a cookie for a validity is for one full year. You do not have to do set_email for every visit. 
 
 ###2. Tracking page views
 
@@ -34,6 +34,8 @@ Agile tracks the page views for each session for each contact. The visitor is tr
 
 
 #API Usage
+
+API is required if you are trying to sync your contacts and need to do more advanced operations.
 
 ###1.Tracking website visitors
 
