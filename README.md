@@ -18,7 +18,22 @@ Create an account at https://www.agilecrm.com
 - All API calls are Asynchronous
 - To execute multiple API calls simultaneously, you need to place the subsequent API call in the success callback of the previous call.
 
-#Usage
+
+#Basic Usage (Things to know)
+###1. Tracking Contacts: 
+
+```javascript
+_set_email('xxxx')
+```
+
+Agile tracks contacts automatically from the emails clicks if you have tracking enabled (track and push) in your outbound emails in the campaigns or one-on-one emails. This step is not required unless you have a landing form or offer custom login for you application. Agile sets a cookie for a validity is for one full year. You do not have to do set_email for every visit. 
+
+###2. Tracking page views
+
+Agile tracks the page views for each session for each contact. The visitor is tracked as anonymous unless a set_email is done.  The correct step is to set_email and then track_page_view. Anonymous users are tracked and backtracked when a user email is added using set_email. All the old page views are attributed to the new email address. This is often the case where the user browses many sessions and then signups for your product or provides the email in the landing pages during product download.
+
+
+#API Usage
 
 ###1.Tracking website visitors
 
@@ -29,7 +44,7 @@ Typically, once a visitor fills a form on your website, you should call ```_agil
 Once this is done, you will start getting real-time notifications on Agile whenever the contact is on your website. You will also see website visits in Timeline and in Webstats tab for that contact.
 Agile also tracks anonymous visitors (i.e visitors for whom you have not called ```_agile.set_email```), and once the vistor fills a form and you do a create_contact, set_email, all the previous web history is attached to the contact.
 
-#### 1.1 Seting Email of the page visitor
+#### 1.1 Setting Email of the page visitor
 
 To set the tracking cookie for the visitor, use the API call below
 
