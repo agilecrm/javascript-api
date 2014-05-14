@@ -1,0 +1,159 @@
+<!--
+   LandingPage.html
+   
+   Copyright 2014 Agile <care@agilecrm.com>
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Standard Lead</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="https://YOUR_DOMAIN.agilecrm.com/stats/min/agile-min.js"></script>
+	<link rel="shortcut icon" href="https://instapage-static.s3.amazonaws.com/favicon-301.ico" type="image/ico">
+	<script>
+		_agile.set_account("YOUR_API_KEY","YOUR_DOMAIN");
+		_agile.track_page_view();
+	</script>
+	<script>
+	function agile_add_contact(){
+	var collection = document.getElementById('agile_landing_form');
+	var contact={};
+	for(var i=0;i<collection.length;i++){
+		if(collection[i].name == "agile_name")contact.first_name = collection[i].value;
+		if(collection[i].name == "agile_email")contact.email = collection[i].value;
+		if(collection[i].name == "agile_phone")contact.phone = collection[i].value;
+	}
+		 _agile.create_contact(contact, {
+            success: function(data) {
+              _agile.set_email(contact.email);
+              console.log("success");
+            },
+            error: function(data) {
+              console.log("error");
+            }
+          });
+       }
+	</script>
+</head>
+
+<body>
+	<div class="container">
+	<div class="heading text-center">
+	<h1><strong>This is your primary heading.</strong><br><small>Test different versions to see which converts better!</small></h1>
+	</div>
+	<br>
+	<br>
+	<div class="row col-md-offset-2"> 
+	<div style="height: 530px; width: 380px;" class="col-md-6"><!--form info-->
+		<div class="info_header">
+		<h3>
+		<strong>Tell visitors about your offer</strong><br>
+		<small>
+			Click here to add / edit your own text. This should be used to tell a story and let your users know a little more about your product or service. How can you benefit them?
+		</small>
+		</h3>
+		</div><br><!--info header-->
+		<div class="point">
+			<div class="row">
+				<img style="float:left;" src="http://instapage-thumbnail.s3.amazonaws.com/19947-46609-43x38-checkmarkblue.png" alt="">
+				<h3>First Important Point</h3></span>
+			</div>
+			<p>Let your users know a little more about your product or service. How can you benefit them?</p>
+		</div>
+		<div class="point">
+			<div class="row">
+				<img style="float:left;" src="http://instapage-thumbnail.s3.amazonaws.com/19947-46609-43x38-checkmarkblue.png" alt="">
+				<h3>Second Important Point</h3>
+			</div>
+			<p>Let your users know a little more about your product or service. How can you benefit them?</p>
+		</div>
+		<div class="point">
+			<div class="row">
+				<img style="float:left;" src="http://instapage-thumbnail.s3.amazonaws.com/19947-46609-43x38-checkmarkblue.png" alt="">
+				<h3>Third Important Point</h3>
+			</div>
+			<p>Let your users know a little more about your product or service. How can you benefit them?</p>
+		</div>
+		
+	</div><!--form info-->
+	<div class="form col-md-6 text-center" style="padding:0px 30px 0px 30px; background-color:#eafbfc; height: 580px; width: 380px; border-width:5px; border-radius: 10px 10px 10px 10px; border-style:solid; border-color:#0598e2"><br>
+		<div class="formheading">
+			<h3><strong>Get a Free Quote</strong> <br> <small>Test different form button text to see which converts better. You may be suprised! </small> </h3>
+		</div>
+		<hr>
+		<form id="agile_landing_form" action="#" method="get">
+				<div class="row formfield">
+					<input required="required" style="font-weight:bold; width: 90%;" class="form-control input-lg" name="agile_name" type="text" placeholder="Name*">
+				</div><br>
+				<div class="row formfield">
+					<input required="required" style="font-weight:bold; width: 90%;" class="form-control input-lg" name="agile_email" type="text" placeholder="Email*">
+				</div><br>
+				<div class="row formfield">
+					<input required="required" style="font-weight:bold; width: 90%;" class="form-control input-lg" name="agile_phone" type="text" placeholder="Phone*">
+				</div><br>
+				<div class="row submitbutton">
+					<button class="btn btn-success btn-lg btn-block" type="submit" style="font-weight:bold;color:#fff; width:90%;">Contact Me</button>
+				</div>
+		</form>
+		<hr>
+		<div class="formfooter" style="align:bottom;">
+			<p>We will never share your information with a 3rd party. We hate spam just as much as you do!</p> 
+		</div><!--form footer-->
+	</div><!--form div-->
+	</div><!--form with info-->
+<br>
+<br>
+<div class="text-center">
+	<h4>"I've been a customer of YourCompany for 5 months & couldn't be more pleased with the service & guidance they've provided! I would recommend this to anyone looking to improve their business succes!"</h4>
+</div><br>
+<div class="logo text-center">
+	<img src="http://instapage-thumbnail.s3.amazonaws.com/19947-46613-85x71-profileicon.png" alt="">
+</div><br>
+<div class="text-center">
+	<h4><strong>Bruce Wayne</strong><br><small>Founder & CEO, Batman Inc.</small></h4>
+</div><br>		
+<hr>
+<div class="row">
+	<div class="col-md-6">
+	<p>2014 Copyright &copy; YourCompany Inc. </p>
+	</div> <!--copyright-->
+	<div class="col-md-6 text-right">
+	<p>Privacy Policy | Terms of Use</p>
+	</div><!--privacy policy-->
+</div><!--page footer-->
+</div> <!--end of container-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/additional-methods.min.js"></script>
+<script>
+	jQuery.validator.setDefaults({
+		debug: true
+	});
+	$("#agile_landing_form").validate({
+	rules: {
+	agile_name: {
+	  required: true
+	},
+	agile_email: {
+      required: true,
+      email: true
+    },
+    agile_phone: {
+	  required: true
+	}
+  },
+  submitHandler: function(form) {
+    agile_add_contact();
+    form.submit();
+  }
+});
+</script>
+
+</body>
+
+</html>
