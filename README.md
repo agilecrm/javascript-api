@@ -19,7 +19,7 @@ Create an account at https://www.agilecrm.com
 ###1. Tracking Contacts: 
 
 ```javascript
-agile.set_email('xxxx')
+_agile.set_email('xxxx')
 ```
 
 Agile tracks contacts automatically from the emails clicks if you have tracking enabled (track and push) in your outbound emails in the campaigns or one-on-one emails. This step is not required unless you have a landing form or offer custom login for your application. Agile sets a cookie for a validity is for one full year. You do not have to do set_email for every visit. 
