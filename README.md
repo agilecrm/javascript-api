@@ -111,6 +111,65 @@ _agile.create_contact(contact, {
     }
 });
 ```
+- Success data:
+**data** parameter of the success callback function returns the contact object created.
+
+```javascript
+{
+    "id": 5834008696979456,
+    "type": "PERSON",
+    "created_time": 1411995091,
+    "updated_time": 0,
+    "viewed_time": 0,
+    "star_value": 0,
+    "lead_score": 0,
+    "tags": [],
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "subtype": null,
+            "value": "Test"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "subtype": null,
+            "value": "Contact"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "email",
+            "subtype": null,
+            "value": "test@contact.com"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "title",
+            "subtype": null,
+            "value": "QA"
+        }
+    ]
+}
+```
+
+- Error data:
+**data** parameter of the error callback function provides the error message
+
+```javascript
+error: function(data){
+    console.log(data.error)
+}
+```
+
+some of the common error messages are as follows
+    
+    - Duplicate found for "test@contact.com"
+    - Invalid API key
+    - Invalid parameter
+    - Contacts limit reached
+    - API key missing
+
 ####2.2 Get Contact
 
 Contact can be searched (based on email already set using ```_agile.set_email```)..
