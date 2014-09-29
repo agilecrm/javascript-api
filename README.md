@@ -76,7 +76,7 @@ _agile.get_email({
     }
 })
 ```
-- Success data:
+- Success data :
 
 ```javascript
 Object {email: "grabber@test.com"} 
@@ -87,7 +87,9 @@ Object {email: "grabber@test.com"}
 
 To create contact.
 
-Contact properties are **first_name**, **last_name**, **email**, **company**, **website**, **title**, **tags**, **phone**, **address**.
+Contact properties are :
+
+**first_name**, **last_name**, **email**, **company**, **website**, **title**, **tags**, **phone**, **address**.
 
 - Parameters : contact, callback object (optional)
 
@@ -117,7 +119,7 @@ _agile.create_contact(contact, {
     }
 });
 ```
-- Success data:
+- Success data :
 **data** parameter of the success callback function returns the contact object created.
 
 ```javascript
@@ -166,7 +168,7 @@ format of the contact object is as follows
 }
 ```
 
-- Error data:
+- Error data :
 **data** parameter of the error callback function provides the error message
 
 ```javascript
@@ -199,7 +201,7 @@ _agile.get_contact("contact@test.com", {
     }
 });
 ```
-- Success data:
+- Success data :
 
 **data** parameter of the success function returns the contact object with email used in API call.
 
@@ -239,7 +241,7 @@ Contact properties are stored in an array as
         }
     ]
 ```
-- Error data:
+- Error data :
 
 **data** parameter of the error callback provides the error message for failed API call.
 ```javascript
