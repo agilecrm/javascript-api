@@ -85,7 +85,9 @@ Object {email: "grabber@test.com"}
 ###2.Contact
 #### 2.1 Create Contact
 
-To create contact. Contact properties are **first_name**, **last_name**, **email**, **company**, **website**, **title**, **tags**, **phone**, **address**.
+To create contact.
+
+Contact properties are **first_name**, **last_name**, **email**, **company**, **website**, **title**, **tags**, **phone**, **address**.
 
 - Parameters : contact, callback object (optional)
 
@@ -101,6 +103,10 @@ contact.website = "http://www.example.com";
 var address = {"city":"new delhi", "state":"delhi", "country":"india"};
 contact.address = JSON.stringify(address);
 contact.tags = "tag1, tag2";
+
+// Custom fields can be added to contact object as
+contact.status = "incomplete";
+contact.custom_id = "EN001C";
 
 _agile.create_contact(contact, {
     success: function (data) {
