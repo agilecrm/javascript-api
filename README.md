@@ -60,6 +60,27 @@ _agile.set_email("contact@test.com");
 
 **Note: This call is mandatory for API calls to work. They all use the email address set here to add / update the contact info and associated data.**
 
+#### 1.2 Get Email
+
+To get the email of the contact set
+
+- Parameters : callback object
+
+```javascript
+_agile.get_email({
+    success: function(data){
+        console.log(data.email);
+    },
+    error: function(data){
+        console.log(data.error);
+    }
+})
+```
+- Success data:
+
+```json
+Object {email: "grabber@test.com"} 
+```
 
 ###2.Contact
 #### 2.1 Create Contact
