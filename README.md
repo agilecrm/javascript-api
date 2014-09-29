@@ -121,6 +121,13 @@ _agile.create_contact(contact, {
 **data** parameter of the success callback function returns the contact object created.
 
 ```javascript
+success: function(data){
+	console.log(data);
+}
+```
+format of the contact object is as follows
+
+```javascript
 {
     "id": 5834008696979456,
     "type": "PERSON",
