@@ -172,7 +172,7 @@ some of the common error messages are as follows
 
 ####2.2 Get Contact
 
-Contact can be searched (based on email already set using ```_agile.set_email```)..
+Contact can be searched (based on email already set using ```_agile.set_email```).
 
 - Parameters : contact email, callback object (optional)
 
@@ -186,6 +186,62 @@ _agile.get_contact("contact@test.com", {
     }
 });
 ```
+- Success data:
+
+**data** parameter of the success function returns the contact object with email used in API call.
+
+Contact properties can be accessed as 
+```javascript
+success: function(data){
+    console.log(data.properties)
+}
+```
+
+Contact properties are stored in an array as
+```javascript
+[
+	{
+            "type": "SYSTEM",
+            "name": "first_name",
+            "subtype": null,
+            "value": "Test"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "subtype": null,
+            "value": "Contact"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "email",
+            "subtype": null,
+            "value": "contact@test.com"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "title",
+            "subtype": null,
+            "value": "QA"
+        }
+    ]
+```
+- Error data:
+
+**data** parameter of the error callback provides the error message for failed API call.
+```javascript
+error: function(data){
+    console.log(data);
+}
+```
+
+format of the error object is as follows
+```javascript
+Object {error: "Contact not found"}
+Object {error: "Invalid API key"}
+Object {error: "API key missing"}
+```
+
 ####2.3 Delete Contact
 
 Deletes a contact (based on email already set using ```_agile.set_email```).
