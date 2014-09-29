@@ -78,7 +78,7 @@ _agile.get_email({
 ```
 - Success data:
 
-```json
+```JSON
 Object {email: "grabber@test.com"} 
 ```
 
