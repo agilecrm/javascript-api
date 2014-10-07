@@ -273,6 +273,20 @@ _agile.delete_contact("contact@test.com", {
     }
 });
 ```
+- Success data :
+
+**data** parameter of the success function returns
+
+```javascript
+Object {success: "Contact deleted successfully"}
+```
+- Error data :
+
+**data** parameter of error callback returns
+
+```javascript
+Object {error: "Contact not found"}
+```
 
 ####2.4 Update Contact
 
@@ -293,6 +307,63 @@ _agile.update_contact({
     }
 });
 ```
+- Success data :
+
+**data** parameter of success callback returns contact object with email used in API call.
+
+```javascript
+{
+    "id": 5834008696979456,
+    "type": "PERSON",
+    "created_time": 1411995091,
+    "updated_time": 0,
+    "viewed_time": 0,
+    "star_value": 0,
+    "lead_score": 0,
+    "tags": [],
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "subtype": null,
+            "value": "Test"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "subtype": null,
+            "value": "Contact"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "email",
+            "subtype": null,
+            "value": "test@contact.com"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "title",
+            "subtype": null,
+            "value": "lead"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "website",
+            "subtype": null,
+            "value": "http://www.example.com"
+        }
+    ]
+}
+```
+
+- Error data :
+
+**data** parameter of error callback returns error object
+
+```javascript
+Object {error: "Contact not found"}
+```
+
 ####2.5 Set Contact Property
 
 To add new or update existing contact property (*first_name*, *last_name*, *title*, *company*, *website*, *phone*, *address*) or any CUSTOM contact property (based on email already set using ```_agile.set_email```).
@@ -353,6 +424,57 @@ _agile.set_property(property, {
     }
 });
 ```
+- Success data : 
+
+**data** parameter of success callback returns contact object with email used in API call.
+
+```javascript
+{
+    "id": 5834008696979456,
+    "type": "PERSON",
+    "created_time": 1411995091,
+    "updated_time": 0,
+    "viewed_time": 0,
+    "star_value": 0,
+    "lead_score": 0,
+    "tags": [],
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "subtype": null,
+            "value": "Test"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "subtype": null,
+            "value": "Contact"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "email",
+            "subtype": null,
+            "value": "test@contact.com"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "abc account",
+            "subtype": null,
+            "value": "premium"
+        }
+    ]
+}
+```
+
+- Error data :
+
+**data** parameter of error callback returs
+
+```javascript
+Object {error: "Contact not found"}
+```
+
 ####2.6 Get Contact Property
 
 To get contact property value based on name of the property, and email set earlier using ```_agile.set_email```.
