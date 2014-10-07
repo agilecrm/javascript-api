@@ -169,7 +169,7 @@ format of the contact object is as follows
 ```
 
 - Error data :
-**data** parameter of the error callback function provides the error message
+**data** parameter of the error callback function provides the error message.
 
 ```javascript
 error: function(data){
@@ -282,7 +282,7 @@ Object {success: "Contact deleted successfully"}
 ```
 - Error data :
 
-**data** parameter of error callback returns
+**data** parameter of error callback is
 
 ```javascript
 Object {error: "Contact not found"}
@@ -358,7 +358,7 @@ _agile.update_contact({
 
 - Error data :
 
-**data** parameter of error callback returns error object
+**data** parameter of error callback provides the message for the failure of API call.
 
 ```javascript
 Object {error: "Contact not found"}
@@ -469,7 +469,7 @@ _agile.set_property(property, {
 
 - Error data :
 
-**data** parameter of error callback returs
+**data** parameter of error callback provides the error message for failed API call.
 
 ```javascript
 Object {error: "Contact not found"}
@@ -491,6 +491,25 @@ _agile.get_property("title", {
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback is returned in the following format
+
+```javascript
+Object {value: "QA"}
+```
+Property value can be accessed as data.value
+
+- Error data :
+
+**data** parameter of the error callback provides the error message for failed API call.
+
+Error message can be accessed as data.error
+
+```javascript
+Object {error: "Property not found for contact"}
+Object {error: "Contact not found"}
+```
 
 ####2.7 Remove Contact Property
 
@@ -508,6 +527,56 @@ _agile.remove_property("title", {
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback is the updated contact object.
+
+```javascript
+{
+    "id": 5834008696979456,
+    "type": "PERSON",
+    "created_time": 1411995091,
+    "updated_time": 0,
+    "viewed_time": 0,
+    "star_value": 0,
+    "lead_score": 0,
+    "tags": [],
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "subtype": null,
+            "value": "Test"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "subtype": null,
+            "value": "Contact"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "email",
+            "subtype": null,
+            "value": "test@contact.com"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "website",
+            "subtype": null,
+            "value": "http://www.example.com"
+        }
+    ]
+}
+```
+- Error data :
+
+**data** parameter of the error callback provides the error message for failed API call.
+
+```javascript
+Object {error: "Contact not found"}
+```
+
 ###3.Tags
 
 ####3.1 Add Tags
