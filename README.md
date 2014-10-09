@@ -159,20 +159,20 @@ _agile.create_contact(contact, {
 });
 ```
 - Success data :
-**data** parameter of the success callback function is the created [contact object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows).
+**data** parameter of the success callback function is the created <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows' target='_blank'>contact object</a>.
 
 ```javascript
-success: function(data){
+{success: function(data){
 	console.log(data);
-}
+}}
 ```
 - Error data :
 **data** parameter of the error callback function provides the error message.
 
 ```javascript
-error: function(data){
+{error: function(data){
     console.log(data.error)
-}
+}}
 ```
 
 some of the common error messages are as follows
@@ -201,7 +201,7 @@ _agile.get_contact("contact@test.com", {
 ```
 - Success data :
 
-**data** parameter of the success function returns the [contact object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows).
+**data** parameter of the success function returns the <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows' target='_blank'>contact object</a>.
 
 - Error data :
 
@@ -271,7 +271,7 @@ _agile.update_contact({
 ```
 - Success data :
 
-**data** parameter of success callback is the updated [contact object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows).
+**data** parameter of success callback is the updated <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows' target='_blank'>contact object</a>.
 
 - Error data :
 
@@ -344,7 +344,7 @@ _agile.set_property(property, {
 ```
 - Success data : 
 
-**data** parameter of success callback is the updated [contact object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows).
+**data** parameter of success callback is the updated <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows' target='_blank'>contact object</a>.
 
 - Error data :
 
@@ -376,7 +376,7 @@ _agile.get_property("title", {
 **data** parameter of the success callback is in the following format
 
 ```javascript
-Object {value: "QA"}
+{value: "QA"}
 ```
 Property value can be accessed as data.value
 
@@ -408,7 +408,7 @@ _agile.remove_property("title", {
 ```
 - Success data : 
 
-**data** parameter of the success callback is the updated [contact object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows).
+**data** parameter of the success callback is the updated <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows' target='_blank'>contact object</a>.
 
 - Error data :
 
@@ -439,7 +439,7 @@ _agile.add_tag('tag1, tag2, tag3, tag4, tag5', {
 ```
 - Success data : 
 
-**data** parameter of the success callback method is the updated [contact object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows).
+**data** parameter of the success callback method is the updated <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows' target='_blank'>contact object</a>.
 
 - Error data :
 
@@ -468,7 +468,7 @@ _agile.remove_tag('tag3, tag4, tag5', {
 ```
 - Success data : 
 
-**data** parameter of the success callback method is the updated [contact object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows).
+**data** parameter of the success callback method is the updated <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows' target='_blank'>contact object</a>.
 
 - Error data :
 
@@ -529,7 +529,7 @@ _agile.add_score(50, {
 ```
 - Success data : 
 
-**data** parameter of the success callback method is the updated [contact object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows).
+**data** parameter of the success callback method is the updated <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows' target='_blank'>contact object</a>.
 
 - Error data :
 
@@ -559,7 +559,7 @@ _agile.substract_score(5, {
 
 - Success data : 
 
-**data** parameter of the success callback method is the updated [contact object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows).
+**data** parameter of the success callback method is the updated <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-contact-object-is-as-follows' target='_blank'>contact object</a>.
 
 - Error data :
 
@@ -695,7 +695,7 @@ _agile.add_task(task, {
 ```
 - Success data : 
 
-**data** parameter of the success callback method is the created [task object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-task-object-is-as-follows).
+**data** parameter of the success callback method is the created <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-task-object-is-as-follows' target='_blank'>task object</a>.
 
 - Error data :
 
@@ -724,7 +724,7 @@ _agile.get_tasks({
 ```
 - Success data : 
 
-**data** parameter of the success callback is the array of [task objects](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-task-object-is-as-follows).
+**data** parameter of the success callback is the array of <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-task-object-is-as-follows' target='_blank'>task objects</a>.
 
 - Error data :
 
@@ -814,7 +814,7 @@ _agile.add_note(note, {
 ```
 - Success data : 
 
-**data** parameter of the success callback is the created [note object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-note-object-is-as-follows);
+**data** parameter of the success callback is the created <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-note-object-is-as-follows' target='_blank'>note object</a>.
 
 - Error data :
 
@@ -843,7 +843,7 @@ _agile.get_notes({
 ```
 - Success data : 
 
-**data** parameter of the success callback is the array of [note objects](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-note-object-is-as-follows).
+**data** parameter of the success callback is the array of <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-note-object-is-as-follows' target='_blank'>note objects</a>.
 
 - Error data :
 
@@ -949,7 +949,7 @@ _agile.add_deal(deal, {
 ```
 - Success data : 
 
-**data** parameter of the success callback is the created [deal object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-deal-object-is-as-follows);
+**data** parameter of the success callback is the created <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-deal-object-is-as-follows' target='_blank'>deal object</a>.
 
 - Error data :
 
@@ -978,7 +978,7 @@ _agile.get_deals({
 ```
 - Success data : 
 
-**data** parameter of the success callback is the array of [deal objects](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-deal-object-is-as-follows).
+**data** parameter of the success callback is the array of <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-deal-object-is-as-follows' target='_blank'>deal objects</a>.
 
 - Error data :
 
@@ -1062,20 +1062,20 @@ _agile.create_company(company, {
 });
 ```
 - Success data :
-**data** parameter of the success callback function is the created [company object](https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-company-object-is-as-follows).
+**data** parameter of the success callback function is the created <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-company-object-is-as-follows' target='_blank'>company object</a>.
 
 ```javascript
-success: function(data){
+{success: function(data){
 	console.log(data);
-}
+}}
 ```
 - Error data :
 **data** parameter of the error callback is the error object.
 
 ```javascript
-error: function(data){
+{error: function(data){
     console.log(data.error)
-}
+}}
 ```
 some of the common error messages are as follows
     
