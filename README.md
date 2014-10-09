@@ -78,12 +78,51 @@ _agile.get_email({
 ```
 - Success data :
 
-```javascript
-Object {email: "grabber@test.com"} 
-```
+contact@test.com
 
 ###2.Contact
-#### 2.1 Create Contact
+####Format of the contact object is as follows
+
+```javascript
+{
+    "id": 5834008696979456,
+    "type": "PERSON",
+    "created_time": 1411995091,
+    "updated_time": 0,
+    "viewed_time": 0,
+    "star_value": 0,
+    "lead_score": 0,
+    "tags": [],
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "first_name",
+            "subtype": null,
+            "value": "Test"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "last_name",
+            "subtype": null,
+            "value": "Contact"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "email",
+            "subtype": null,
+            "value": "test@contact.com"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "title",
+            "subtype": null,
+            "value": "QA"
+        }
+    ]
+}
+```
+
+####2.1 Create Contact
 
 To create contact.
 
@@ -120,54 +159,13 @@ _agile.create_contact(contact, {
 });
 ```
 - Success data :
-**data** parameter of the success callback function returns the contact object created.
+**data** parameter of the success callback function is the created [contact object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-contact-object-is-as-follows).
 
 ```javascript
 success: function(data){
 	console.log(data);
 }
 ```
-format of the contact object is as follows
-
-```javascript
-{
-    "id": 5834008696979456,
-    "type": "PERSON",
-    "created_time": 1411995091,
-    "updated_time": 0,
-    "viewed_time": 0,
-    "star_value": 0,
-    "lead_score": 0,
-    "tags": [],
-    "properties": [
-        {
-            "type": "SYSTEM",
-            "name": "first_name",
-            "subtype": null,
-            "value": "Test"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "last_name",
-            "subtype": null,
-            "value": "Contact"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "email",
-            "subtype": null,
-            "value": "test@contact.com"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "title",
-            "subtype": null,
-            "value": "QA"
-        }
-    ]
-}
-```
-
 - Error data :
 **data** parameter of the error callback function provides the error message.
 
@@ -203,59 +201,22 @@ _agile.get_contact("contact@test.com", {
 ```
 - Success data :
 
-**data** parameter of the success function returns the contact object with email used in API call.
+**data** parameter of the success function returns the [contact object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-contact-object-is-as-follows).
 
-Contact properties can be accessed as 
-```javascript
-success: function(data){
-    console.log(data.properties)
-}
-```
-
-Contact properties are stored in an array as
-```javascript
-[
-	{
-            "type": "SYSTEM",
-            "name": "first_name",
-            "subtype": null,
-            "value": "Test"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "last_name",
-            "subtype": null,
-            "value": "Contact"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "email",
-            "subtype": null,
-            "value": "contact@test.com"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "title",
-            "subtype": null,
-            "value": "QA"
-        }
-    ]
-```
 - Error data :
 
 **data** parameter of the error callback provides the error message for failed API call.
 ```javascript
 error: function(data){
-    console.log(data);
+    console.log(data.error);
 }
 ```
 
-format of the error object is as follows
-```javascript
-Object {error: "Contact not found"}
-Object {error: "Invalid API key"}
-Object {error: "API key missing"}
-```
+some of the common error messages are as follows
+
+    - Contact not found
+    - Invalid API key
+    - API key missing
 
 ####2.3 Delete Contact
 
@@ -275,17 +236,18 @@ _agile.delete_contact("contact@test.com", {
 ```
 - Success data :
 
-**data** parameter of the success function returns
+**data** parameter of the success function is
 
 ```javascript
-Object {success: "Contact deleted successfully"}
+{success: "Contact deleted successfully"}
 ```
 - Error data :
 
 **data** parameter of error callback is
 
 ```javascript
-Object {error: "Contact not found"}
+{error: "Contact not found"}
+{error:"Invalid API key"}
 ```
 
 ####2.4 Update Contact
@@ -309,59 +271,15 @@ _agile.update_contact({
 ```
 - Success data :
 
-**data** parameter of success callback returns contact object with email used in API call.
-
-```javascript
-{
-    "id": 5834008696979456,
-    "type": "PERSON",
-    "created_time": 1411995091,
-    "updated_time": 0,
-    "viewed_time": 0,
-    "star_value": 0,
-    "lead_score": 0,
-    "tags": [],
-    "properties": [
-        {
-            "type": "SYSTEM",
-            "name": "first_name",
-            "subtype": null,
-            "value": "Test"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "last_name",
-            "subtype": null,
-            "value": "Contact"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "email",
-            "subtype": null,
-            "value": "test@contact.com"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "title",
-            "subtype": null,
-            "value": "lead"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "website",
-            "subtype": null,
-            "value": "http://www.example.com"
-        }
-    ]
-}
-```
+**data** parameter of success callback is the updated [contact object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-contact-object-is-as-follows).
 
 - Error data :
 
-**data** parameter of error callback provides the message for the failure of API call.
+**data** parameter of error callback provides the error message object.
 
 ```javascript
-Object {error: "Contact not found"}
+{error: "Contact not found"}
+{error:"Invalid API key"}
 ```
 
 ####2.5 Set Contact Property
@@ -426,53 +344,15 @@ _agile.set_property(property, {
 ```
 - Success data : 
 
-**data** parameter of success callback returns contact object with email used in API call.
-
-```javascript
-{
-    "id": 5834008696979456,
-    "type": "PERSON",
-    "created_time": 1411995091,
-    "updated_time": 0,
-    "viewed_time": 0,
-    "star_value": 0,
-    "lead_score": 0,
-    "tags": [],
-    "properties": [
-        {
-            "type": "SYSTEM",
-            "name": "first_name",
-            "subtype": null,
-            "value": "Test"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "last_name",
-            "subtype": null,
-            "value": "Contact"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "email",
-            "subtype": null,
-            "value": "test@contact.com"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "abc account",
-            "subtype": null,
-            "value": "premium"
-        }
-    ]
-}
-```
+**data** parameter of success callback is the updated [contact object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-contact-object-is-as-follows).
 
 - Error data :
 
-**data** parameter of error callback provides the error message for failed API call.
+**data** parameter of error callback provides the error message object.
 
 ```javascript
-Object {error: "Contact not found"}
+{error: "Contact not found"}
+{error:"Invalid API key"}
 ```
 
 ####2.6 Get Contact Property
@@ -493,7 +373,7 @@ _agile.get_property("title", {
 ```
 - Success data : 
 
-**data** parameter of the success callback is returned in the following format
+**data** parameter of the success callback is in the following format
 
 ```javascript
 Object {value: "QA"}
@@ -502,13 +382,12 @@ Property value can be accessed as data.value
 
 - Error data :
 
-**data** parameter of the error callback provides the error message for failed API call.
-
-Error message can be accessed as data.error
+**data** parameter of the error callback is the error message object.
 
 ```javascript
-Object {error: "Property not found for contact"}
-Object {error: "Contact not found"}
+{error: "Property not found for contact"}
+{error: "Contact not found"}
+{error:"Invalid API key"}
 ```
 
 ####2.7 Remove Contact Property
@@ -529,52 +408,15 @@ _agile.remove_property("title", {
 ```
 - Success data : 
 
-**data** parameter of the success callback is the updated contact object.
+**data** parameter of the success callback is the updated [contact object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-contact-object-is-as-follows).
 
-```javascript
-{
-    "id": 5834008696979456,
-    "type": "PERSON",
-    "created_time": 1411995091,
-    "updated_time": 0,
-    "viewed_time": 0,
-    "star_value": 0,
-    "lead_score": 0,
-    "tags": [],
-    "properties": [
-        {
-            "type": "SYSTEM",
-            "name": "first_name",
-            "subtype": null,
-            "value": "Test"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "last_name",
-            "subtype": null,
-            "value": "Contact"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "email",
-            "subtype": null,
-            "value": "test@contact.com"
-        },
-        {
-            "type": "SYSTEM",
-            "name": "website",
-            "subtype": null,
-            "value": "http://www.example.com"
-        }
-    ]
-}
-```
 - Error data :
 
-**data** parameter of the error callback provides the error message for failed API call.
+**data** parameter of the error callback is the error message object.
 
 ```javascript
-Object {error: "Contact not found"}
+{error: "Contact not found"}
+{error:"Invalid API key"}
 ```
 
 ###3.Tags
@@ -595,6 +437,19 @@ _agile.add_tag('tag1, tag2, tag3, tag4, tag5', {
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback method is the updated (contact object)[https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-contact-object-is-as-follows].
+
+- Error data :
+
+**data** parameter of error callback is the error object.
+
+```javascript
+{error:"Invalid API key"}
+{error: "Contact not found"}
+```
+
 ####3.2 Remove Tags
 
 Removes tags from the contact (based on email already set using ```_agile.set_email```).
@@ -611,6 +466,19 @@ _agile.remove_tag('tag3, tag4, tag5', {
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback method is the updated (contact object)[https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-contact-object-is-as-follows].
+
+- Error data :
+
+**data** parameter of error callback is the error object.
+
+```javascript
+{error: "Contact not found"}
+{error:"Invalid API key"}
+```
+
 ####3.3 Get Tags
 
 Gets the tags associated with the contact (based on email already set using ```_agile.set_email```).
@@ -626,6 +494,21 @@ _agile.get_tags({
         console.log("error");
     }
 });
+```
+- Success data : 
+
+**data** parameter of the success callback is the array of tags.
+
+```javascript
+["tag4", "tag5"]
+```
+- Error data :
+
+**data** parameter of error callback is the error object.
+
+```javascript
+{error:"Invalid API key"}
+{error: "Contact not found"}
 ```
 ###4.Score
 ####4.1 Add Score
@@ -644,6 +527,19 @@ _agile.add_score(50, {
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback method is the updated [contact object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-contact-object-is-as-follows).
+
+- Error data :
+
+**data** parameter of error callback is the error object.
+
+```javascript
+{error: "Contact not found"}
+{error:"Invalid API key"}
+```
+
 ####4.2 Subtract Score
 
 Subtract score of a contact (based on email already set using ```_agile.set_email```).
@@ -660,6 +556,20 @@ _agile.substract_score(5, {
     }
 });
 ```
+
+- Success data : 
+
+**data** parameter of the success callback method is the updated [contact object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-contact-object-is-as-follows).
+
+- Error data :
+
+**data** parameter of error callback is the error object.
+
+```javascript
+{error: "Contact not found"}
+{error:"Invalid API key"}
+```
+
 ####4.3 Get Score
 
 Get score associated with contact (based on email already set using ```_agile.set_email```).
@@ -676,7 +586,83 @@ _agile.get_score({
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback is the updated score.
+
+```javascript
+10
+```
+- Error data :
+
+**data** parameter of error callback is the error object. Message can be accessed as data.error
+
+```javascript
+{error: "Contact not found"}
+{error:"Invalid API key"}
+```
+
+
 ###5.Task
+####Format of the task object is as follows
+
+```javascript
+{
+    "id": 5341427487735808,
+    "type": "MEETING",
+    "priority_type": "HIGH",
+    "due": 1376047332,
+    "created_time": 1412831338,
+    "is_complete": false,
+    "contacts": [
+        {
+            "id": 4692715627347968,
+            "type": "PERSON",
+            "star_value": 2,
+            "lead_score": 0,
+            "tags": [
+                "tags"
+            ],
+            "properties": [
+                {
+                    "type": "SYSTEM",
+                    "name": "first_name",
+                    "subtype": null,
+                    "value": "test"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "last_name",
+                    "subtype": null,
+                    "value": "contact"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "email",
+                    "subtype": "",
+                    "value": "test@contact.com"
+                }
+            ]
+        }
+    ],
+    "subject": "Sample Task",
+    "entity_type": "task",
+    "notes": [],
+    "note_description": null,
+    "progress": 0,
+    "status": "YET_TO_START",
+    "taskOwner": {
+        "id": 5066549580791808,
+        "domain": null,
+        "email": "sample@contact.com",
+        "referer": {
+            "referral_count": 0,
+            "reference_by_domain": null
+        }
+    }
+}
+```
+
 ####5.1 Add Task
 
 Add task to contact (based on email already set using ```_agile.set_email```).
@@ -707,6 +693,19 @@ _agile.add_task(task, {
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback method is the created [task object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-task-object-is-as-follows).
+
+- Error data :
+
+**data** parameter of error callback is the error object.
+
+```javascript
+{error: "Contact not found"}
+{error:"Invalid API key"}
+```
+
 ####5.2 Get Tasks
 
 Get the tasks data associated with contact (based on email already set using ```_agile.set_email```).
@@ -723,7 +722,76 @@ _agile.get_tasks({
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback is the array of [task objects](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-task-object-is-as-follows).
+
+- Error data :
+
+**data** parameter of error callback is the error object.
+
+```javascript
+{error: "Contact not found"}
+{error:"Invalid API key"}
+```
+
 ###6.Note
+####Format of the note object is as follows
+
+```javascript
+{
+    "id": 6185852417867776,
+    "created_time": 1412832296,
+    "subject": "Test Note",
+    "description": "This is a test note",
+    "contact_ids": [
+        "4692715627347968"
+    ],
+    "owner_id": "5066549580791808",
+    "entity_type": "note",
+    "contacts": [
+        {
+            "id": 4692715627347968,
+            "type": "PERSON",
+            "star_value": 2,
+            "lead_score": 0,
+            "tags": [
+                "tags"
+            ],
+            "properties": [
+                {
+                    "type": "SYSTEM",
+                    "name": "first_name",
+                    "subtype": null,
+                    "value": "test"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "last_name",
+                    "subtype": null,
+                    "value": "contact"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "email",
+                    "subtype": "",
+                    "value": "test@contact.com"
+                }
+            ],
+            "owner": {
+                "id": 5066549580791808,
+                "email": "sample@contact.com"
+            }
+        }
+    ],
+    "domainOwner": {
+        "id": 5066549580791808,
+        "domain": null,
+        "email": "sample@contact.com"
+    }
+}
+```
+
 ####6.1 Add Note
 
 Creates a new note (based on email already set using ```_agile.set_email```). Note object has the properties **subject** the subject of the note, and **description** note description.
@@ -744,6 +812,19 @@ _agile.add_note(note, {
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback is the created [note object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-note-object-is-as-follows);
+
+- Error data :
+
+**data** parameter of the error callback is the error object.
+
+```javascript
+{error: "Contact not found"}
+{error:"Invalid API key"}
+```
+
 ####6.2 Get Notes
 
 Get all the notes data associated with the contact (based on email already set using ```_agile.set_email```).
@@ -760,7 +841,88 @@ _agile.get_notes({
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback is the array of [note objects](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-note-object-is-as-follows).
+
+- Error data :
+
+**data** parameter of error callback is the error object.
+
+```javascript
+{error: "Contact not found"}
+{error:"Invalid API key"}
+```
+
 ###7.Deal
+####Format of the deal object is as follows
+
+```javascript
+{
+    "id": 5622902464446464,
+    "name": "Test Deal",
+    "contact_ids": [
+        "4692715627347968"
+    ],
+    "description": "This is a test deal",
+    "expected_value": 10000,
+    "milestone": "won",
+    "probability": 95,
+    "close_date": 1376047332,
+    "owner_id": "5066549580791808",
+    "created_time": 1412833056,
+    "track": null,
+    "entity_type": "deal",
+    "notes": [],
+    "note_description": null,
+    "pipeline": {
+        "id": 4532186929692672,
+        "milestones": "1,2,3",
+        "name": "track"
+    },
+    "pipeline_id": 4532186929692672,
+    "contacts": [
+        {
+            "id": 4692715627347968,
+            "type": "PERSON",
+            "star_value": 2,
+            "lead_score": 0,
+            "tags": [
+                "tags"
+            ],
+            "properties": [
+                {
+                    "type": "SYSTEM",
+                    "name": "first_name",
+                    "subtype": null,
+                    "value": "test"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "last_name",
+                    "subtype": null,
+                    "value": "contact"
+                },
+                {
+                    "type": "SYSTEM",
+                    "name": "email",
+                    "subtype": "",
+                    "value": "test@contact.com"
+                }
+            ],
+            "owner": {
+                "id": 5066549580791808,
+                "email": "sample@contact.com"
+            }
+        }
+    ],
+    "owner": {
+        "id": 5066549580791808,
+        "email": "sample@contact.com"
+    }
+}
+```
+
 ####7.1 Add Deal
 
 Add deal to contact (based on email already set using ```_agile.set_email```). Deal object has the properties **name** name of the deal, **description** deal description, **expected_value**, **milestone**, **probability** and **close_date**.
@@ -785,6 +947,19 @@ _agile.add_deal(deal, {
     }
 });
 ```
+- Success data : 
+
+**data** parameter of the success callback is the created [note object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-deal-object-is-as-follows);
+
+- Error data :
+
+**data** parameter of the error callback is the error object.
+
+```javascript
+{error: "Contact not found"}
+{error:"Invalid API key"}
+```
+
 ####7.2 Get Deals
 
 Gets all deals data related to contact (based on email already set using ```_agile.set_email```)
@@ -801,7 +976,69 @@ _agile.get_deals({
     }
 });
 ```
-###8.Create Company
+- Success data : 
+
+**data** parameter of the success callback is the array of [deal objects](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-deal-object-is-as-follows).
+
+- Error data :
+
+**data** parameter of error callback is the error object.
+
+```javascript
+{error: "Contact not found"}
+{error:"Invalid API key"}
+```
+###8.Company
+####Format of the company object is as follows
+
+```javascript
+{
+    "id": 6748802371289088,
+    "type": "COMPANY",
+    "created_time": 1412833579,
+    "updated_time": 0,
+    "viewed_time": 0,
+    "viewed": {
+        "viewed_time": 0,
+        "viewer_id": null
+    },
+    "star_value": 0,
+    "lead_score": 0,
+    "tags": [],
+    "tagsWithTime": [],
+    "properties": [
+        {
+            "type": "SYSTEM",
+            "name": "name",
+            "subtype": null,
+            "value": "abc inc"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "phone",
+            "subtype": null,
+            "value": "+1-541-754-3010"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "url",
+            "subtype": null,
+            "value": "http://www.abc-inc.com"
+        },
+        {
+            "type": "SYSTEM",
+            "name": "address",
+            "subtype": null,
+            "value": "{\"city\":\"new delhi\",\"state\":\"delhi\",\"country\":\"india\"}"
+        }
+    ],
+    "owner": {
+        "id": 5066549580791808,
+        "email": "sample@contact.com"
+    }
+}
+```
+####8.1 Create Company
 
 Add company as contact. Company object has the properties **name**, **phone**, **url**, **address**.
 
@@ -824,6 +1061,30 @@ _agile.create_company(company, {
     }
 });
 ```
+- Success data :
+**data** parameter of the success callback function is the created [company object](https://github.com/agilecrm/javascript-api/edit/master/README.md#Format-of-the-company-object-is-as-follow).
+
+```javascript
+success: function(data){
+	console.log(data);
+}
+```
+- Error data :
+**data** parameter of the error callback is the error object.
+
+```javascript
+error: function(data){
+    console.log(data.error)
+}
+```
+some of the common error messages are as follows
+    
+    - Duplicate found for "http://www.abc-inc.com"
+    - Invalid API key
+    - Invalid parameter
+    - Contacts limit reached
+    - API key missing
+
 ##More
 
 You may refer to [create_contact.html](https://github.com/agilecrm/javascript-api/blob/master/create_contact.html) and [all.html](https://github.com/agilecrm/javascript-api/blob/master/all.html) for example implementation of multiple API methods simultaneously. 
