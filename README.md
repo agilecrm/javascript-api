@@ -19,7 +19,7 @@ Create an account at https://www.agilecrm.com
 ###1. Tracking Contacts: 
 
 ```javascript
-_agile.set_email('xxxx')
+_agile.set_email('visitor@youwebsite.com')
 ```
 
 Agile tracks contacts automatically from the emails clicks if you have tracking enabled (track and push) in your outbound emails in the campaigns or one-on-one emails. This step is not required unless you have a landing form or offer custom login for your application. Agile sets a cookie for a validity is for one full year. You do not have to do set_email for every visit. 
@@ -55,14 +55,14 @@ To set the tracking cookie for the visitor, use the API call below
 - Parameters : contact email
 
 ```javascript
-_agile.set_email("contact@test.com");
+_agile.set_email("visitor@youwebsite.com");
 ```
 
 **Note: This call is mandatory for API calls to work. They all use the email address set here to add / update the contact info and associated data.**
 
 #### 1.2 Get Email
 
-To get the email of the contact set
+To get the email of visitor (whose email was already set earlier)
 
 - Parameters : callback object
 
@@ -78,7 +78,13 @@ _agile.get_email({
 ```
 - Success data :
 
-contact@test.com
+visitor@youwebsite.com
+
+####1.3 Tracking across multiple sites
+It is possible to track a vistor on multiple subdomains of your site. i.e www.mysite.com and abc.mysite.com. 
+The API call _agile.set_tracking_domain ('mysite.com') allows this. This call should be placed in between _agile.set_account() and  _agile.track_page_view() calls. 
+
+When this is used, visitor email that is set using set_email on one of your sites, can be accessed using the get_email on the other sites (subdomains).
 
 ###2.Contact
 ####Format of the contact object is as follows
