@@ -11,7 +11,7 @@ Create an account at https://www.agilecrm.com
 - You may access the analytics code from ***Admin Settings -> API & Analytics -> Analytics Code***
 - Copy the 6 lines of script and paste in it in your webpage's HTML just before the ```</BODY>``` tag, for which you need API methods and / or tracking.
 
-![Finding Analytics Code] (https://raw.github.com/agilecrm/javascript-api/master/analytics_code.png)
+![Finding Analytics Code] (https://github.com/agilecrm/javascript-api/blob/master/analytics_code_new.jpg)
 
 
 
