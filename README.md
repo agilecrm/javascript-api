@@ -934,13 +934,14 @@ _agile.get_notes({
 Add deal to contact (based on email already set using ```_agile.set_email```). Deal object has the properties **name** name of the deal, **description** deal description, **expected_value**, **milestone**, **probability** and **close_date**.
 
 - Parameters : deal, callback object (optional)
+- Note : Deal milestones name is case sensitive. It should be match the name with this url (https://{domain}.agilecrm.com/#milestones)
 
 ```javascript
 var deal = {};
 deal.name = "Test Deal";
 deal.description = "This is a test deal";
 deal.expected_value = "10000";
-deal.milestone = "won";
+deal.milestone = "Won";
 deal.probability = "95";
 deal.close_date = "1376047332";		// Epoch time
 
