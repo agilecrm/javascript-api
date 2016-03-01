@@ -1,12 +1,58 @@
-JavaScript API
-==============
-JavaScript Connector for Agile
+Agile CRM JavaScript API 
+=================
 
-You need to have an agile account to use the API.
+[Agile CRM] (https://www.agilecrm.com/) is a new breed CRM software with sales and marketing automation.
 
-Create an account at https://www.agilecrm.com
+Table of contents
+---------------
 
-# Requirements
+**[API's details](#setting-api--analytics)**
+  * [Setting API & Analytics](#setting-api--analytics)
+
+**[Basic usage (Things to know)](#basic-usage-things-to-know)**
+  * [1 Tracking Contacts](#1-tracking-contacts)
+  * [2 Tracking page views](#2-tracking-page-views)
+  * [3 Email override](#3-email-override)
+
+**[API usage (Things to know)](#api-usage)**
+  * [1 Tracking website visitors](#1-tracking-contacts)
+    * [1.1 Setting Email of the page visitor](#11-setting-email-of-the-page-visitor)
+    * [1.2 Get Email](#12-get-email)
+    * [1.3 Tracking across multiple sites](#13-tracking-across-multiple-sites)
+
+**[2 Contact](#2contact)**
+  * [1 Create contact](#21-create-contact)
+  * [2 Get contact](#22-get-contact)
+  * [3 Delete contact](#23-delete-contact)
+  * [4 Update contact](#24-update-contact)
+  * [5 Set contact property](#25-set-contact-property)
+  * [6 Get Contact Property](#26-get-contact-property)
+  * [7 Remove Contact Property](#27-remove-contact-property)
+
+**[3 Tags](#3tags)**
+  * [1 Add tags](#31-add-tags)
+  * [2 Remove tags](#32-remove-tags)
+  * [3 Get tags](#33-get-tags)
+
+
+**[4 Score](#4score)**
+  * [1 Add score](#41-add-score)
+  * [2 Subtract Score](#42-subtract-score)
+  * [3 Get Score](#43-get-score)
+
+**[5 Task](#5task)**
+  * [1 Add Task](#51-add-task)
+
+**[6 Note](#6note)**
+  * [1 Add Note](#61-add-note)
+
+**[7 Deal](#7deal)**
+  * [1 Add Deal](#71-add-deal)
+
+**[8 Company](#8company)**
+  * [1 Create Company](#81-create-company)
+
+## API's details
 ### Setting API & Analytics
 - You may access the analytics code from ***Admin Settings -> API & Analytics -> Analytics Code***
 - Copy the 6 lines of script and paste in it in your webpage's HTML just before the ```</BODY>``` tag, for which you need API methods and / or tracking.
@@ -15,8 +61,8 @@ Create an account at https://www.agilecrm.com
 
 
 
-#Basic Usage (Things to know)
-###1. Tracking Contacts: 
+##Basic usage (Things to know)
+###1. Tracking contacts: 
 
 ```javascript
 _agile.set_email('visitor@youwebsite.com')
@@ -28,11 +74,11 @@ Agile tracks contacts automatically from the emails clicks if you have tracking 
 
 Agile tracks the page views for each session for each contact. The visitor is tracked as anonymous unless a set_email is done.  The correct step is to set_email and then track_page_view. Anonymous users are tracked and backtracked when a user email is added using set_email. All the old page views are attributed to the new email address. This is often the case where the user browses many sessions and then signups for your product or provides the email in the landing pages during product download.
 
-###3. Email Override
+###3. Email override
 
 If a new email address is provided, Agile treats them as a new user and the sessions are tracked for the new user. The old page views are still valid for the old email and can be accessed from Agile dashboard.
 
-#API Usage
+##API usage
 
 API can be used to sync data from your website/app to Agile CRM.
 
@@ -712,35 +758,6 @@ _agile.add_task(task, {
 {error:"Invalid API key"}
 ```
 
-####5.2 Get Tasks
-
-Get the tasks data associated with contact (based on email already set using ```_agile.set_email```).
-
-- Parameters : callback object (optional)
-
-```javascript
-_agile.get_tasks({
-    success: function (data) {
-        console.log("success");
-    },
-    error: function (data) {
-        console.log("error");
-    }
-});
-```
-- Success data : 
-
-**data** parameter of the success callback is the array of <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-task-object-is-as-follows' target='_blank'>task objects</a>.
-
-- Error data :
-
-**data** parameter of error callback is the error object.
-
-```javascript
-{error: "Contact not found"}
-{error:"Invalid API key"}
-```
-
 ###6.Note
 ####Format of the note object is as follows
 
@@ -825,35 +842,6 @@ _agile.add_note(note, {
 - Error data :
 
 **data** parameter of the error callback is the error object.
-
-```javascript
-{error: "Contact not found"}
-{error:"Invalid API key"}
-```
-
-####6.2 Get Notes
-
-Get all the notes data associated with the contact (based on email already set using ```_agile.set_email```).
-
-- Parameters : callback object (optional)
-
-```javascript
-_agile.get_notes({
-    success: function (data) {
-        console.log("success");
-    },
-    error: function (data) {
-        console.log("error");
-    }
-});
-```
-- Success data : 
-
-**data** parameter of the success callback is the array of <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-note-object-is-as-follows' target='_blank'>note objects</a>.
-
-- Error data :
-
-**data** parameter of error callback is the error object.
 
 ```javascript
 {error: "Contact not found"}
@@ -967,34 +955,6 @@ _agile.add_deal(deal, {
 {error:"Invalid API key"}
 ```
 
-####7.2 Get Deals
-
-Gets all deals data related to contact (based on email already set using ```_agile.set_email```)
-
-- Parameters : callback object (optional)
-
-```javascript
-_agile.get_deals({
-    success: function (data) {
-        console.log("success");
-    },
-    error: function (data) {
-        console.log("error");
-    }
-});
-```
-- Success data : 
-
-**data** parameter of the success callback is the array of <a href='https://github.com/agilecrm/javascript-api/blob/master/README.md#format-of-the-deal-object-is-as-follows' target='_blank'>deal objects</a>.
-
-- Error data :
-
-**data** parameter of error callback is the error object.
-
-```javascript
-{error: "Contact not found"}
-{error:"Invalid API key"}
-```
 ###8.Company
 ####Format of the company object is as follows
 
