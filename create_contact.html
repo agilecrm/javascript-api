@@ -1,47 +1,72 @@
-<html>
-   <head>
-      <title>Test Agile CRM API</title>
-   </head>
-   <body>
 
-      <script type="text/javascript" src="https://YOUR_DOMAIN.agilecrm.com/stats/min/agile-min.js"></script>
-      
-      <script type="text/javascript">
-      
-          // Set your agile account.
-          _agile.set_account('YOUR_API_KEY', 'YOUR_DOMAIN');
-          
-      </script>
-   
-      This is an example implementation of Agile CRM javascript API.
-      
-      <script type="text/javascript">
-      
-         // To create contact.
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+
+    </head>
+    <body>
+        
+        <h1>Create Contact and Track it</h1>
+         <h4>Please run this code at some server : (XAMPP OR WAMP OR TOMCAT OR Google APP engine)</h4>
          
-         _agile.create_contact(
-		{
-		    "email": "jim@example.com",
-		    "first_name": "Jim",
-		    "last_name": "Brown",
-		    "company": "abc corp",
-		    "title": "lead",
-		    "phone": "+1-541-754-3010",
-		    "website": "http://www.example.com",
-		    "address": "{\"city\":\"new delhi\", \"state\":\"delhi\",\"country\":\"india\"}",
-		    //JSON STRINGIFIED
-		    "tags": "tag1, tag2"
-		}, {
-    		success: function(data)
-    		{
-        		console.log("contact created");
-    		},
-    		error: function(data)
-    		{
-        		console.log("failed to create contact");
-    		}
-		});
-         
-      </script>
-   </body>
+        <form name="create_contact_track">
+            First Name : <input type='text' name = "first_name" id = "f_name" ><br/>
+            Last  Name : <input type='text' name = "first_name" id = "l_name" ><br/>
+            Email      : <input type='email' name = "first_name" id = "email" ><br/><br/>
+
+            <input type="button" value="Create Contact in Agile CRM" onclick = "createContact()">
+        </form>	
+        <script type="text/javascript" src="https://ghanshyam.agilecrm.com/stats/min/agile-min.js"></script>
+        <script type="text/javascript" > _agile.set_account('26cklfqvphtmcf2buehaeut6c0', 'ghanshyam');
+            _agile.track_page_view();
+            _agile_execute_web_rules();
+        </script>
+
+        <script>
+
+            function createContact() {
+                alert('hello');
+
+                var email_received = document.getElementById('email').value;
+
+                var contact = {};
+                contact.email = email_received;
+                contact.first_name = document.getElementById('f_name').value;
+                contact.last_name = document.getElementById('l_name').value;
+                contact.company = "abc corp";
+                contact.title = "lead";
+                contact.phone = "+1-541-754-3010";
+                contact.website = "http://www.example.com";
+                var address = {"city": "new delhi", "state": "delhi", "country": "india"};
+                contact.address = JSON.stringify(address);
+                contact.tags = "tag1, tag2";
+
+                // Custom fields can be added to contact object as
+                contact.status = "incomplete";
+                contact.custom_id = "EN001C";
+
+                _agile.create_contact(contact, {
+                    success: function (data) {
+
+                        // Set Email at success of contact creation. But you can set it at failure too.
+                        _agile.set_email(email_received);
+                        
+                        console.log("success");
+                        console.log("Response = "+data);
+                    },
+                    error: function (data) {
+                        console.log("error");
+                        console.log("Error Cause = "+data);
+                    }
+                });
+
+
+        // Function end
+            }
+
+        </script>
+    </body>
 </html>
