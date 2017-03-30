@@ -57,8 +57,8 @@ Table of contents
 
 
 
-##Basic usage (Things to know)
-###1. Tracking contacts: 
+## Basic usage (Things to know)
+### 1. Tracking contacts: 
 
 ```javascript
 _agile.set_email('visitor@youwebsite.com')
@@ -66,22 +66,22 @@ _agile.set_email('visitor@youwebsite.com')
 
 Agile tracks contacts automatically from the emails clicks if you have tracking enabled (track and push) in your outbound emails in the campaigns or one-on-one emails. This step is not required unless you have a landing form or offer custom login for your application. Agile sets a cookie for a validity is for one full year. You do not have to do set_email for every visit. 
 
-###2. Tracking page views
+### 2. Tracking page views
 
 Agile tracks the page views for each session for each contact. The visitor is tracked as anonymous unless a set_email is done.  The correct step is to set_email and then track_page_view. Anonymous users are tracked and backtracked when a user email is added using set_email. All the old page views are attributed to the new email address. This is often the case where the user browses many sessions and then signups for your product or provides the email in the landing pages during product download.
 
-###3. Email override
+### 3. Email override
 
 If a new email address is provided, Agile treats them as a new user and the sessions are tracked for the new user. The old page views are still valid for the old email and can be accessed from Agile dashboard.
 
-##API usage
+## API usage
 
 API can be used to sync data from your website/app to Agile CRM.
 
 **Note: All API calls are Asynchronous. To execute multiple API calls simultaneously, you need to place the subsequent API call in the success callback of the previous call.**
 
 
-###1.Tracking website visitors
+### 1.Tracking website visitors
 
 You can track the visitors to your website by adding the 6 lines of code you see above - which includes the ```_agile.track_page_view``` call. 
 But for this to work, you need to call ```_agile.set_email```, with the email address of site visitor (when he fills a form etc).
@@ -122,16 +122,16 @@ _agile.get_email({
 
 visitor@youwebsite.com
 
-####1.3 Tracking across multiple sites
+#### 1.3 Tracking across multiple sites
 It is possible to track a vistor on multiple subdomains of your site. i.e www.mysite.com and abc.mysite.com. 
 The API call _agile.set_tracking_domain ('mysite.com') allows this. This call should be placed in between _agile.set_account() and  _agile.track_page_view() calls. 
 
 When this is used, visitor email that is set using set_email on one of your sites, can be accessed using the get_email on the other sites (subdomains).
 
-###2.Contact
-####Format of the contact object is as follows
+### 2.Contact
+#### Format of the contact object is as follows
 
-####2.1 Create Contact
+#### 2.1 Create Contact
 
 To create contact.
 
@@ -192,7 +192,7 @@ some of the common error messages are as follows
     - Contacts limit reached
     - API key missing
 
-####2.2 Get Contact
+#### 2.2 Get Contact
 
 Contact can be searched (based on email already set using ```_agile.set_email```).
 
@@ -227,7 +227,7 @@ some of the common error messages are as follows
     - Invalid API key
     - API key missing
 
-####2.3 Update Contact
+#### 2.3 Update Contact
 
 Updates the contact with given JSON data (based on email already set using ```_agile.set_email```).
 
@@ -259,7 +259,7 @@ _agile.update_contact({
 {error:"Invalid API key"}
 ```
 
-####2.4 Set Contact Property
+#### 2.4 Set Contact Property
 
 To add new or update existing contact property (*first_name*, *last_name*, *title*, *company*, *website*, *phone*, *address*) or any CUSTOM contact property (based on email already set using ```_agile.set_email```).
 
@@ -331,9 +331,9 @@ _agile.set_property(property, {
 {error: "Contact not found"}
 {error:"Invalid API key"}
 ```
-###3.Tags
+### 3.Tags
 
-####3.1 Add Tags
+#### 3.1 Add Tags
 
 Adds tags to the contact (based on email already set using ```_agile.set_email```). 
 
@@ -362,7 +362,7 @@ _agile.add_tag('tag1, tag2, tag3, tag4, tag5', {
 {error: "Contact not found"}
 ```
 
-####3.2 Get Tags
+#### 3.2 Get Tags
 
 Gets the tags associated with the contact (based on email already set using ```_agile.set_email```).
 
@@ -393,8 +393,8 @@ _agile.get_tags({
 {error:"Invalid API key"}
 {error: "Contact not found"}
 ```
-###4.Score
-####4.1 Add Score
+### 4.Score
+#### 4.1 Add Score
 
 Add score to contact (based on email already set using ```_agile.set_email```).
 
@@ -423,7 +423,7 @@ _agile.add_score(50, {
 {error:"Invalid API key"}
 ```
 
-####4.2 Get Score
+#### 4.2 Get Score
 
 Get score associated with contact (based on email already set using ```_agile.set_email```).
 
@@ -456,10 +456,10 @@ _agile.get_score({
 ```
 
 
-###5.Task
-####Format of the task object is as follows
+### 5.Task
+#### Format of the task object is as follows
 
-####5.1 Add Task
+#### 5.1 Add Task
 
 Add task to contact (based on email already set using ```_agile.set_email```).
 
@@ -502,10 +502,10 @@ _agile.add_task(task, {
 {error:"Invalid API key"}
 ```
 
-###6.Note
-####Format of the note object is as follows
+### 6.Note
+#### Format of the note object is as follows
 
-####6.1 Add Note
+#### 6.1 Add Note
 
 Creates a new note (based on email already set using ```_agile.set_email```). Note object has the properties **subject** the subject of the note, and **description** note description.
 
@@ -538,10 +538,10 @@ _agile.add_note(note, {
 {error:"Invalid API key"}
 ```
 
-###7.Deal
-####Format of the deal object is as follows
+### 7.Deal
+#### Format of the deal object is as follows
 
-####7.1 Add Deal
+#### 7.1 Add Deal
 
 Add deal to contact (based on email already set using ```_agile.set_email```). Deal object has the properties **name** name of the deal, **description** deal description, **expected_value**, **milestone**, **probability** and **close_date**.
 
@@ -579,10 +579,10 @@ _agile.add_deal(deal, {
 {error:"Invalid API key"}
 ```
 
-###8.Company
-####Format of the company object is as follows
+### 8.Company
+#### Format of the company object is as follows
 
-####8.1 Create Company
+#### 8.1 Create Company
 
 Add company as contact. Company object has the properties **name**, **phone**, **url**, **address**.
 
@@ -629,6 +629,6 @@ some of the common error messages are as follows
     - Contacts limit reached
     - API key missing
 
-##More
+## More
 
 You may refer to [create_contact.html](https://github.com/agilecrm/javascript-api/blob/master/create_contact.html) and [all.html](https://github.com/agilecrm/javascript-api/blob/master/all.html) for example implementation of multiple API methods simultaneously. 
